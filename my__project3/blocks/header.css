@@ -1,0 +1,11 @@
+.header {
+  margin-top: 45px;
+}
+.header__logo {
+  max-height: 74px;
+  max-width: 880pxpx;
+
+  border: 1px;
+}
+.header__line {
+}
