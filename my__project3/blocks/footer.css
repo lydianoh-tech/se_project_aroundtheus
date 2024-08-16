@@ -6,22 +6,19 @@
   margin: 0 auto;
 }
 
-.footer__copyright{
+.footer__copyright {
   font-family: Inter, Arial, Sans-serif;
   line-height: 1.21;
   font-size: 18px;
   color: #545454;
-  
-  
-  justify-content: flex-end;
 
+  justify-content: flex-end;
 }
 @media screen and (max-width: 775px) {
   .footer {
     padding-bottom: 0;
     max-width: 100%;
     margin: 0;
-    j
   }
 
   .footer__copyright {
