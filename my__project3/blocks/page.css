@@ -1,18 +1,20 @@
 .page {
   background-color: black;
-  color: #ffff;
-  max-height: 1217px;
+
   max-width: 1280px;
 }
 .page__section {
-  max-width: 880px;
+  max-width: 882px;
   width: 100%;
   position: relative;
+  margin: 0 auto;
 }
 .page__content {
   padding-right: 200px;
   padding-left: 200px;
   background-color: black;
+  -webkit-font-smoothing: antialised;
+  -moz-osx-font-smoothing: grayscale;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
