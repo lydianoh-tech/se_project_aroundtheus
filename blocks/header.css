@@ -1,14 +1,16 @@
 .header {
   margin-top: 45px;
-  border-bottom: solid rgb(62, 59, 59);
-}
-.header__logo {
   max-height: 74px;
   max-width: 880px;
-
-  border: 1px;
+  border-bottom: 1px solid #545454;
 }
-.header__line {
-  max-width: 880px;
-  min-height: 0;
+.header__logo {
+  border: 1px;
+  margin-bottom: 41px;
+}
+@media screen and (max-width: 320px) {
+  .header {
+    min-width: 282px;
+    min-height: 286;
+  }
 }
