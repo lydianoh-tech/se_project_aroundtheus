@@ -1,5 +1,6 @@
 .footer {
-  padding-top: 67px;
+  margin-top: 67px;
+  width: 100%;
 }
 .footer__copyright {
   margin-top: 0;
@@ -16,11 +17,10 @@
   .footer__copyright {
     margin-top: 0;
     margin-bottom: 0;
-    font-family: Inter, Arial, Sans-serif;
+    font-family: "Inter", Arial, Sans-serif;
     line-height: 1.21;
     font-size: 18px;
     color: #545454;
-    justify-content: flex-end;
   }
   .footer {
     padding-top: 48px;

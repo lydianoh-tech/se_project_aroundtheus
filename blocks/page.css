@@ -1,23 +1,25 @@
 .page {
-  background-color: black;
   color: #ffff;
-  max-width: 1280px;
+  background-color: black;
 }
+
 .page__content {
-  padding-right: 19px;
-  padding-left: 19px;
-  display: flex;
+  box-sizing: border-box;
+
   flex-direction: column;
+  margin: 0;
+  min-height: 100%;
+
+  padding: 0 20px;
+  justify-content: center;
 }
 .page__section {
-  max-width: 882px;
+  margin: auto;
+  max-width: 880px;
   width: 100%;
-  box-sizing: border-box;
-  margin: 0 auto;
+  position: relative;
 }
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 619px) {
   .page__content {
-    max-width: 320px;
-    max-height: 2812px;
   }
 }

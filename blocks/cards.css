@@ -1,74 +1,28 @@
 .cards {
-  font-size: "inter", Arial, sans serif;
-  padding: 15px 0 36px;
-  margin-top: 30px;
+  font-size: "Inter", Arial, sans-serif;
+  padding: 0;
+  width: 100%;
 }
-.card__list {
+.cards__list {
   display: grid;
-  max-width: 880px;
-
-  grid-template-columns: repeat(auto-fit, 282px);
-  grid-gap: 20px 17px;
-  list-style-type: none;
   justify-content: center;
 
+  grid-gap: 20px 17px;
+  grid-template-columns: repeat(auto-fit, 282px);
   padding: 0;
+  margin: 0;
 
   box-sizing: border-box;
 }
-.card {
-  display: flex;
-  flex-direction: column;
 
-  list-style-type: none;
-  border-radius: 10px;
-  overflow: hidden;
-}
-.card__image {
-  width: 282px;
-  height: 282px;
-}
-.card__description {
-  display: flex;
-  background-color: #ffff;
-  color: #000;
-  padding: 25px 25px 20px;
-  align-items: center;
-  justify-content: space-between;
-  text-overflow: ellipsis;
+@media screen and (max-width: 320px) {
+  .cards__list {
+    margin: 0;
+    gap: 20px;
 
-  font-weight: 900;
-  font-size: 24px;
-  line-height: 29px;
-  width: 100%;
-  box-sizing: border-box;
-}
-.card__title {
-  font-family: "inter", Arial, sans-serif;
-  font-weight: 900;
-  font-size: 24px;
-  line-height: 29px;
-
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-.card__like-button {
-  background: transparent url(../images/like-inactive.svg) center no-repeat;
-  width: 21px;
-  height: 18px;
-  border: none;
-  outline: none;
-}
-
-@media (max-width: 320px) {
-  .card__list {
-    display: grid;
     max-width: 282px;
     max-height: 2266px;
-    margin: auto;
-
-    list-style-type: none;
-    justify-content: center;
+    margin-right: 19px;
+    margin-left: 19px;
   }
 }
