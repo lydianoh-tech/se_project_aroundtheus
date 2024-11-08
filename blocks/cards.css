@@ -2,10 +2,12 @@
   font-size: "Inter", Arial, sans-serif;
   padding: 0;
   width: 100%;
+  margin-top: 51px;
 }
 .cards__list {
   display: grid;
   justify-content: center;
+  max-width: 880px;
 
   grid-gap: 20px 17px;
   grid-template-columns: repeat(auto-fit, 282px);
@@ -15,14 +17,21 @@
   box-sizing: border-box;
 }
 
-@media screen and (max-width: 320px) {
-  .cards__list {
-    margin: 0;
-    gap: 20px;
-
-    max-width: 282px;
-    max-height: 2266px;
-    margin-right: 19px;
+@media screen and (max-width: 619px) {
+  .cards {
     margin-left: 19px;
+    margin-right: 19px;
+    padding: 0;
+    margin-bottom: 0;
+  }
+
+  .cards__list {
+    display: grid;
+    max-height: 282px;
+    max-height: 2266px;
+    gap: 20px;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    list-style: none;
+    padding: 0;
   }
 }

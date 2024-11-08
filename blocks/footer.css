@@ -13,7 +13,7 @@
   justify-content: flex-end;
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 619px) {
   .footer__copyright {
     margin-top: 0;
     margin-bottom: 0;
@@ -23,6 +23,8 @@
     color: #545454;
   }
   .footer {
-    padding-top: 48px;
+    margin-top: 48px;
+    margin-left: 19px;
+    margin-bottom: 36px;
   }
 }
