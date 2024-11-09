@@ -48,5 +48,9 @@
   outline: none;
   margin-right: 20px;
 }
-@media screen and (max-width: 619px) {
+.card__like-button:hover {
+  cursor: pointer;
+  opacity: 40%;
+}
+@media screen and (max-width: 320px) {
 }

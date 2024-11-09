@@ -9,7 +9,7 @@
   justify-content: center;
 }
 
-@media screen and (max-width: 619px) {
+@media screen and (max-width: 320px) {
   .header {
     margin-left: 0;
     margin-right: 0;
@@ -19,5 +19,6 @@
   .header__logo {
     padding: 0;
     margin-left: 27px;
+    margin-bottom: 32px;
   }
 }
