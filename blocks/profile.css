@@ -46,7 +46,7 @@
 }
 
 .profile__edit-button {
-  background: transparent url(../images/edit-sign.png) center no-repeat;
+  background: transparent url(../images/edit-sign.svg) center no-repeat;
   width: 24px;
   height: 24px;
   grid-area: button;
@@ -78,7 +78,7 @@
 .profile__image {
   border-radius: 50%;
   object-fit: cover;
-  box-shadow: 22.5px;
+  box-shadow: 0px 0px 22.5px rgba(0, 0, 0, 0.3);
   width: 120px;
   height: 120px;
 
@@ -103,7 +103,7 @@
     margin: 26.25px auto 0;
     text-align: center;
     font-family: Inter, Arial, Sans-serif;
-    font-weight: 500px;
+    font-weight: 500;
     line-height: 26.63px;
   }
 

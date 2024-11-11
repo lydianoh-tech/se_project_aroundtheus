@@ -16,7 +16,7 @@
 .card__description {
   display: flex;
   background-color: #fff;
-  font-size: "Inter", Arial, sans-serif;
+  font-family: "Inter", Arial, sans-serif;
   color: #000;
   padding: 0;
 
