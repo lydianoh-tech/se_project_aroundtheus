@@ -1,6 +1,7 @@
 .footer {
   margin-top: 67px;
   width: 100%;
+  margin-bottom: 60px;
 }
 .footer__copyright {
   margin-top: 0;
@@ -25,5 +26,6 @@
   .footer {
     margin-top: 48px;
     margin-bottom: 36px;
+    margin-left: 19px;
   }
 }
