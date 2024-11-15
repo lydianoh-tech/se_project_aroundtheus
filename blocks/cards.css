@@ -21,11 +21,13 @@
   .cards {
     padding: 0;
     margin-bottom: 0;
+    margin-right: 19px;
+    margin-top: 36px;
   }
 
   .cards__list {
     display: grid;
-    max-height: 282px;
+    max-width: 282px;
     max-height: 2266px;
     gap: 20px;
     list-style: none;

@@ -3,11 +3,24 @@
   color: white;
 }
 .page__section {
+  margin: 0 auto;
+}
+.page__content {
   justify-content: center;
   margin: 0 auto;
+
   max-width: 882px;
   box-sizing: border-box;
 }
-.page__content {
-  margin: 0 auto;
+@media screen and (max-width: 320px) {
+  .page {
+    background-color: black;
+  }
+  .page__content {
+    margin-top: 28px;
+    max-width: 100%;
+    box-sizing: border-box;
+    justify-content: center;
+    margin-bottom: 36px;
+  }
 }
