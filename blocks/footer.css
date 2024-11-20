@@ -14,7 +14,7 @@
   justify-content: flex-end;
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 480px) {
   .footer__copyright {
     margin-top: 0;
     margin-bottom: 0;
