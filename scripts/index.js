@@ -12,7 +12,7 @@ const initialCards = [
     link: "https://unsplash.com/photos/a-church-in-the-middle-of-a-field-with-mountains-in-the-background-FmOPaefLRA0",
   },
   {
-    nane: "Raspopova Marina",
+    name: "Raspopova Marina",
     link: "https://unsplash.com/photos/a-close-up-of-a-bunch-of-purple-flowers-aYE-yHHQVBs",
   },
   {
