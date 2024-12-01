@@ -48,7 +48,7 @@
   width: 358px;
   height: 17.34px;
 }
-.close__icon {
+.modal__close-icon {
   border: none;
   width: 40px;
   height: 40px;
@@ -111,7 +111,7 @@
     width: 238px;
     height: 27px;
   }
-  .close__icon {
+  .modal__close-icon {
     border: none;
     width: 26px;
     height: 26px;
