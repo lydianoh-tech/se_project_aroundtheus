@@ -92,6 +92,7 @@
   padding-bottom: 3, 75px;
   background-position: center;
 }
+
 @media screen and (max-width: 480px) {
   .profile {
     display: flex;
