@@ -50,7 +50,7 @@ function openModal() {
 function closeModal() {
   profileModal.classList.remove("modal_opened");
 }
-/*unction getCardElement(data) {
+function getCardElement(data) {
   // Clone the template
   const cardElement = cardTemplate.cloneNode(true);
 
@@ -64,7 +64,7 @@ function closeModal() {
 
   // Return the populated card element
   return cardElement;
-}*/
+}
 
 //Function to handle profile edit submission
 function handleProfileEditSubmit(e) {
@@ -88,8 +88,8 @@ modalCloseButton.addEventListener("click", closeModal);
 
 profileEditForm.addEventListener("submit", handleProfileEditSubmit);
 
-/* Adding cards to the page
+// Adding cards to the page
 initialCards.forEach((data) => {
   const cardElement = getCardElement(data);
   cardsListElement.append(cardElement);
-});*/
+});
