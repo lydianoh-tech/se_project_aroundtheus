@@ -47,7 +47,6 @@
   border: none;
   width: 358px;
   height: 17.34px;
-  
 }
 .modal__close-icon {
   border: none;
@@ -76,7 +75,7 @@
   display: none;
 }
 
-.modal_open {
+.modal_opened {
   display: flex;
 }
 
