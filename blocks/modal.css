@@ -63,6 +63,10 @@
   background-color: transparent;
 }
 .modal__button {
+  font-family: "Inter", Arial, Sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 21.78px;
   margin-top: 48px;
   width: 358px;
   height: 50.15px;
@@ -133,9 +137,9 @@
   }
   .modal__button {
     font-family: "Inter", Arial, Sans-serif;
-    font-size: 18px;
+    font-size: 14px;
     font-weight: 400;
-    line-height: 21.78px;
+    line-height: 16.94px;
     width: 238px;
     height: 46px;
     border-radius: 2px;
