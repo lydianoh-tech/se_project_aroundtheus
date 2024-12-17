@@ -74,6 +74,7 @@ function handleProfileEditSubmit(e) {
   // Update profile title and description based on input field values
   profileTitle.textContent = profileTitleInput.value;
   profileDescription.textContent = profileDescriptionInput.value;
+  closeModal();
 }
 
 // Event listeners
