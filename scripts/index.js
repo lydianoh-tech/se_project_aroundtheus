@@ -25,7 +25,7 @@ const initialCards = [
   },
 ];
 // Query  DOM elements
-const profileEditButton = document.querySelector(".profile__edit-button");
+const profileEditButton = document.querySelector("#profile__edit-button");
 
 const profileModal = document.querySelector("#modal");
 const modalCloseButton = document.querySelector("#modal__close-icon");
@@ -39,8 +39,9 @@ const profileDescriptionInput = document.querySelector(
 const profileEditForm = profileModal.querySelector("#modal__form");
 
 const cardsListElement = document.querySelector("#card__list");
-const cardTemplate =
-  document.querySelector("#cards__template").content.firstChild;
+const cardTemplate = document
+  .querySelector("#cards__template")
+  .content.querySelector(".card");
 
 function openModal() {
   profileModal.classList.add("modal_opened");

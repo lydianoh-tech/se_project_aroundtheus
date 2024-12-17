@@ -22,7 +22,7 @@
   font-size: 42px;
   line-height: 48px;
   font-weight: 500;
-  margin-right: 3.75px;
+  margin-right: 0;
   width: 373px;
   margin-top: 22px;
   margin-left: 0;
@@ -60,6 +60,7 @@
 
   margin-top: 37px;
   margin-right: 165px;
+  margin-left: 18px;
 }
 .profile__edit-button:hover {
   cursor: pointer;
