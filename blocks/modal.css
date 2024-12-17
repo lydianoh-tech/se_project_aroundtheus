@@ -115,6 +115,10 @@
   }
 
   .modal__input {
+    font-family: "Inter", Arial, Sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16.94px;
     border: none;
     width: 238px;
     height: 27px;
@@ -128,6 +132,10 @@
     right: 5px;
   }
   .modal__button {
+    font-family: "Inter", Arial, Sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 21.78px;
     width: 238px;
     height: 46px;
     border-radius: 2px;
