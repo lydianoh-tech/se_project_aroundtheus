@@ -44,7 +44,11 @@
             </p>
           </div>
 
-          <button type="button" class="profile__add-button"></button>
+          <button
+            type="button"
+            class="profile__add-button"
+            id="profile__add-button"
+          ></button>
         </section>
         <section class="cards">
           <ul class="cards__list" id="cards__list"></ul>
@@ -54,7 +58,39 @@
         <p class="footer__copyright">&copy;2022 Around The U.S.</p>
       </footer>
     </div>
-    <div class="modal" id="modal">
+    <div class="card__modal" id="card__modal">
+      <div class="card__modal-container">
+        <form class="card__modal-form" name="modal__form" id="card__modal-form">
+          <button
+            type="button"
+            class="card__modal-close-icon"
+            id="card__modal-close-icon"
+          ></button>
+          <fieldset class="card__modal-fieldset">
+            <p class="card__modal-title" id="card__modal-title">New Place</p>
+            <label class="card__modal-label" for="card__modal-title-input">
+              <input
+                type="text"
+                name="name"
+                class="card__modal-input"
+                id="card__modal-title-input"
+                placeholder="Title"
+            /></label>
+            <label
+              class="card__modal-label"
+              for="card__modal-description-input"
+            >
+              <input
+                type="text"
+                class="card__modal-input"
+                id="card__modal-description-input"
+                placeholder="Image link" /></label
+            ><button type="submit" class="card__modal-button">Create</button>
+          </fieldset>
+        </form>
+      </div>
+    </div>
+    <div class="profile__modal" id="profile__modal">
       <div class="modal__container">
         <form class="modal__form" name="modal__form" id="modal__form">
           <button

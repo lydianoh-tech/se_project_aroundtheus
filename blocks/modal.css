@@ -1,4 +1,4 @@
-.modal {
+.profile__modal {
   position: fixed;
   display: flex;
   top: 0;
@@ -75,7 +75,7 @@
   background-color: black;
   color: white;
 }
-.modal {
+.profile__modal {
   display: none;
 }
 

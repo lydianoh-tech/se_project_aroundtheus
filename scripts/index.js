@@ -24,32 +24,35 @@ const initialCards = [
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lago.jpg",
   },
 ];
-// Query  DOM elements
+// Query DOM elements
 const profileEditButton = document.querySelector("#profile__edit-button");
-
-const profileModal = document.querySelector("#modal");
-const modalCloseButton = document.querySelector("#modal__close-icon");
+const profileModal = document.querySelector("#profile__modal");
+const modalCloseButton = profileModal.querySelector("#modal__close-icon");
 const profileTitle = document.querySelector(".profile__title");
 const profileDescription = document.querySelector(".profile__description");
 const profileTitleInput = document.querySelector("#modal__title-input");
 const profileDescriptionInput = document.querySelector(
   "#modal__description-input"
 );
-// Query element from block element
 const profileEditForm = profileModal.querySelector("#modal__form");
 
 const cardsListElement = document.querySelector("#cards__list");
 const cardTemplate = document
   .querySelector("#cards__template")
   .content.querySelector(".card");
+const addProfileButton = document.querySelector("#profile__add-button");
+const cardModal = document.querySelector("#card__modal");
+const cardModalForm = document.querySelector("#card__modal-form");
+const closeCardModalButton = cardModal.querySelector("#card__modal-close-icon");
 
-function openModal() {
-  profileModal.classList.add("modal_opened");
+// Function to open the modal
+function openModal(pop) {
+  pop.classList.add("modal_opened");
 }
 
 // Function to close the modal
-function closeModal() {
-  profileModal.classList.remove("modal_opened");
+function closeModal(pop) {
+  pop.classList.remove("modal_opened");
 }
 function getCardElement(data) {
   // Clone the template
@@ -74,7 +77,7 @@ function handleProfileEditSubmit(e) {
   // Update profile title and description based on input field values
   profileTitle.textContent = profileTitleInput.value;
   profileDescription.textContent = profileDescriptionInput.value;
-  closeModal();
+  closeModal(profileModal);
 }
 
 // Event listeners
@@ -83,14 +86,17 @@ profileEditButton.addEventListener("click", () => {
   profileTitleInput.value = profileTitle.textContent;
   profileDescriptionInput.value = profileDescription.textContent;
 
-  profileModal.classList.add("modal_opened");
+  openModal(profileModal);
 });
 
-modalCloseButton.addEventListener("click", closeModal);
+addProfileButton.addEventListener("click", () => {
+  openModal(cardModal);
+});
 
-profileEditForm.addEventListener("submit", handleProfileEditSubmit);
+closeCardModalButton.addEventListener("click", () => closeModal(cardModal));
+modalCloseButton.addEventListener("click", () => closeModal(profileModal));
 
-// Adding cards to the page
+// Add cards to the page
 initialCards.forEach((data) => {
   const cardElement = getCardElement(data);
   cardsListElement.append(cardElement);
