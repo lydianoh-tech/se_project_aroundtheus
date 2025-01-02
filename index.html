@@ -33,7 +33,7 @@
             />
           </div>
           <div class="profile__info">
-            <h1 class="profile__title" id="profile__title">Jack cousteau</h1>
+            <h1 class="profile__title" id="profile__title">Jack Cousteau</h1>
             <button
               type="button"
               class="profile__edit-button"
@@ -58,6 +58,18 @@
         <p class="footer__copyright">&copy;2022 Around The U.S.</p>
       </footer>
     </div>
+
+    <form class="image__modal modal__type-image" id="image__modal">
+      <img src="" alt="" class="image__modal-image" id="image__modal-image" />
+
+      <button
+        type="button"
+        class="image__modal_close-icon"
+        id="image__modal_close-icon"
+      ></button>
+      <p class="image__modal-title" id="image__modal-title"></p>
+    </form>
+
     <div class="card__modal" id="card__modal">
       <div class="card__modal-container">
         <form class="card__modal-form" name="modal__form" id="card__modal-form">
@@ -68,22 +80,19 @@
           ></button>
           <fieldset class="card__modal-fieldset">
             <p class="card__modal-title" id="card__modal-title">New Place</p>
-            <label class="card__modal-label" for="card__modal-title-input">
+            <label class="card__modal-label" for="card__modal-input">
               <input
                 type="text"
                 name="name"
                 class="card__modal-input"
-                id="card__modal-title-input"
+                id="card__modal-title"
                 placeholder="Title"
             /></label>
-            <label
-              class="card__modal-label"
-              for="card__modal-description-input"
-            >
+            <label class="card__modal-label" for="card__modal-input">
               <input
                 type="text"
                 class="card__modal-input"
-                id="card__modal-description-input"
+                id="card__modal-link"
                 placeholder="Image link" /></label
             ><button type="submit" class="card__modal-button">Create</button>
           </fieldset>
@@ -92,7 +101,7 @@
     </div>
     <div class="profile__modal" id="profile__modal">
       <div class="modal__container">
-        <form class="modal__form" name="modal__form" id="modal__form">
+        <form class="modal__form" name="modal__form" id="profile__form">
           <button
             type="button"
             class="modal__close-icon"
@@ -107,21 +116,40 @@
                 class="modal__input"
                 id="modal__title-input"
                 placeholder="Name"
+                required
             /></label>
             <label class="modal__label" for="modal__description-input">
               <input
                 type="text"
+                name="description"
                 class="modal__input"
                 id="modal__description-input"
-                placeholder="Description" /></label
+                placeholder="Description"
+                required
+              /> </label
             ><button type="submit" class="modal__button">Save</button>
           </fieldset>
         </form>
       </div>
     </div>
+    <div class="add__card-container" id="add__card-container"></div>
+
+    <button class="add__card-button" id="add__card-btn"></button>
     <template id="cards__template">
       <li class="card">
         <img src="" alt="" class="card__image" />
+        <div class="card__delete-button" id="card__delete-button">
+          <img
+            src="./images/deletet-btn-lid.svg"
+            alt="delete top lid"
+            class="delete__button_top"
+          />
+          <img
+            src="./images/delete-button.svg"
+            alt="delete bottom image"
+            class="delete__button_bottom"
+          />
+        </div>
         <div class="card__description">
           <h2 class="card__title"></h2>
           <button type="button" class="card__like-button"></button>

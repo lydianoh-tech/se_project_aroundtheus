@@ -1,0 +1,36 @@
+.image__modal {
+  position: fixed;
+  top: 90px;
+  left: 424px;
+  bottom: 90px;
+  right: 423px;
+  display: flex;
+  width: 433px;
+  height: 540px;
+}
+
+.modal_opened {
+  visibility: visible;
+  opacity: 1;
+}
+
+.image__modal-image {
+  max-width: 75vw;
+  max-height: 75vh;
+  object-fit: contain;
+}
+
+.modal__image_close-icon {
+  border: none;
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  top: -45px;
+  right: -45px;
+  background-image: url(../images/Close-Icon.svg);
+  background-repeat: no-repeat;
+  background-size: contain;
+  padding: 0;
+  cursor: pointer;
+  background-color: transparent;
+}

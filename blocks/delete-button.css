@@ -1,0 +1,23 @@
+.card__delete-button {
+  width: 18px;
+  height: 19.3pxpx;
+  border: none;
+
+  position: absolute;
+  margin-top: 18px;
+  margin-left: 249px;
+  margin-right: 14px;
+  margin-bottom: 244.7px;
+}
+.delete__button_top {
+  width: 18px;
+  height: 4.49px;
+  position: relative;
+  margin-bottom: 1.3px;
+}
+.delete__button_bottom {
+  position: relative;
+  width: 15.44px;
+  height: 13.51px;
+  margin-top: 0;
+}
