@@ -106,11 +106,15 @@ function handleProfileEditSubmit(e) {
   // Close the modal
   closeModal(profileModal);
 }
+function addCardFormSubmit(e) {
+  e.preventDefault();
+  const cardElement = getCardView();
+  closeModal(cardModal);
+}
 
 // Event listener for card form submission
 cardModalForm.addEventListener("submit", (e) => {
   e.preventDefault();
-
   // Get form values
   const name = document.querySelector("#card__modal-title").value;
   const link = document.querySelector("#card__modal-link").value;
