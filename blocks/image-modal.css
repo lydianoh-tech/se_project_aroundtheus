@@ -1,12 +1,7 @@
 .image__modal {
   position: fixed;
-  top: 90px;
-  left: 424px;
-  bottom: 90px;
-  right: 423px;
+
   display: flex;
-  width: 433px;
-  height: 540px;
 }
 
 .modal_opened {
@@ -20,7 +15,7 @@
   object-fit: contain;
 }
 
-.modal__image_close-icon {
+.image__modal_close-icon {
   border: none;
   width: 40px;
   height: 40px;
@@ -33,4 +28,11 @@
   padding: 0;
   cursor: pointer;
   background-color: transparent;
+}
+.image__modal-title {
+  color: white;
+  font-family: "Inter", Arial, sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 14.52px;
 }

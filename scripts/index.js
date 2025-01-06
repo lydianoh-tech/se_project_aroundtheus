@@ -52,103 +52,124 @@ const imageModalModalTitle = imageModal.querySelector("#image__modal-title");
 const imageCloseModalButton = imageModal.querySelector(
   "#image__modal_close-icon"
 );
+// Function to open the modal by adding the "modal_opened" class
 
-// Function to open the modal
 function openModal(pop) {
   pop.classList.add("modal_opened");
 }
+
+// Function to close the modal by removing the "modal_opened" class
+function closeModal(pop) {
+  pop.classList.remove("modal_opened");
+}
+
+// Function to open the image modal, setting the image source, alt, and title
 function openImageModal(imageSrc, imageTitle) {
   imageModalImage.src = imageSrc;
-  imageModalImage.alt = imageAlt;
+  imageModalImage.alt = imageTitle;
   imageModalModalTitle.textContent = imageTitle;
   openModal(imageModal);
 }
 
-// Function to close the modal
-function closeModal(pop) {
-  pop.classList.remove("modal_opened");
-}
+// Function to add a card element to the beginning of a container
 function getCardElement(cardElement, container) {
   container.prepend(cardElement);
 }
+// Function to create and configure a card element based on provided data
 function getCardView(data) {
-  // Clone the template
+  // Clone the card template
   const cardElement = cardTemplate.cloneNode(true);
 
-  // Access card elements and set data
+  // Set card image source, alt text, and title
   const cardImageElement = cardElement.querySelector(".card__image");
   const cardTitleElement = cardElement.querySelector(".card__title");
 
   cardImageElement.src = data.link;
   cardImageElement.alt = data.name;
   cardTitleElement.textContent = data.name;
+  openModal(imageModal);
+
+  // Add like button toggle functionality
   const likeButton = cardElement.querySelector(".card__like-button");
   likeButton.addEventListener("click", () => {
-    likeButton.classList.toggle("#card__like_button-active;");
+    likeButton.classList.toggle("card__like_button-active");
   });
+
+  // Add functionality to open image modal on card image click
   cardImageElement.addEventListener("click", () => {
-    openImageModal(data.link, data.name);
+    imageModalImage.src = data.link;
+    imageModalImage.alt = data.name;
+    openModal(imageModal);
   });
+
+  // Add functionality to delete the card
   const deleteButton = cardElement.querySelector(".card__delete-button");
   deleteButton.addEventListener("click", () => {
     cardElement.remove();
   });
+
   return cardElement;
 }
-//Function to handle profile edit submission
-function handleProfileEditSubmit(e) {
-  e.preventDefault(); // Prevent the default form submission behavior
 
-  // Update profile title and description
+// Function to handle profile edit form submission
+function handleProfileEditSubmit(e) {
+  e.preventDefault(); // Prevent form's default submission behavior
+
+  // Update profile title and description with input values
   profileTitle.textContent = profileTitleInput.value;
   profileDescription.textContent = profileDescriptionInput.value;
 
-  // Close the modal
+  // Close the profile modal
   closeModal(profileModal);
 }
+
+// Function to handle card addition form submission
 function addCardFormSubmit(e) {
   e.preventDefault();
-  const cardElement = getCardView();
-  closeModal(cardModal);
-}
 
-// Event listener for card form submission
-cardModalForm.addEventListener("submit", (e) => {
-  e.preventDefault();
-  // Get form values
+  // Get card data and create the card view
   const name = document.querySelector("#card__modal-title").value;
   const link = document.querySelector("#card__modal-link").value;
 
-  // Create and add a new card
-  const cardView = getCardView({
-    name,
-    link,
-  });
-  getCardElement(cardView);
+  // Add the new card to the container
+  const cardElement = getCardView({ name, link });
+  getCardElement(cardElement, cardsListElement);
+  cardsListElement.prepend(getCardElement({ name, link }));
 
-  // Close the modal
-  closeModal(cardModal);
-});
+  // Close the card modal
 
-// Event listeners
+  cardModalForm.reset(); // Reset the form fields
+  closeModal(cardModal); // Close the mod
+}
+
+// Event listener to open the profile edit modal with current values pre-filled
 profileEditButton.addEventListener("click", () => {
-  // Set initial input values
   profileTitleInput.value = profileTitle.textContent;
   profileDescriptionInput.value = profileDescription.textContent;
-
   openModal(profileModal);
 });
 
+// Event listener to open the card addition modal
 addProfileButton.addEventListener("click", () => {
   openModal(cardModal);
 });
-profileForm.addEventListener("submit", handleProfileEditSubmit);
-closeCardModalButton.addEventListener("click", () => closeModal(cardModal));
-modalCloseButton.addEventListener("click", () => closeModal(profileModal));
-imageCloseModalButton.addEventListener("click", () => closeModal(imageModal));
-// Add cards to the page
-initialCards.forEach((data) => {
-  const cardView = getCardView(data);
 
-  getCardElement(cardView, cardsListElement);
+// Event listener to handle profile form submission
+profileForm.addEventListener("submit", handleProfileEditSubmit);
+
+cardModalForm.addEventListener("submit", addCardFormSubmit);
+
+// Event listener to close the card modal
+closeCardModalButton.addEventListener("click", () => closeModal(cardModal));
+
+// Event listener to close the profile modal
+modalCloseButton.addEventListener("click", () => closeModal(profileModal));
+
+// Event listener to close the image modal
+imageCloseModalButton.addEventListener("click", () => closeModal(imageModal));
+
+// Initialize cards on the page from a predefined list
+initialCards.forEach((data) => {
+  const cardView = getCardView(data); // Create a card element
+  getCardElement(cardView, cardsListElement); // Add it to the container
 });
