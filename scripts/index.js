@@ -90,9 +90,11 @@ function getCardView(data) {
   openModal(imageModal);
 
   // Add like button toggle functionality
-  const likeButton = cardElement.querySelector(".card__like-button");
-  likeButton.addEventListener("click", () => {
-    likeButton.classList.toggle("card__like_button-active");
+  const likeButtons = document.querySelectorAll(".card__like-button");
+  likeButtons.forEach((likeButton) => {
+    likeButton.addEventListener("click", () => {
+      likeButton.classList.toggle("card__like_button-active");
+    });
   });
 
   // Add functionality to open image modal on card image click
@@ -128,7 +130,7 @@ function addCardFormSubmit(e) {
   e.preventDefault();
 
   // Get card data and create the card view
-  const name = document.querySelector("#card__modal-title").value;
+  const name = document.querySelector("#card__modal-name").value;
   const link = document.querySelector("#card__modal-link").value;
 
   // Add the new card to the container
@@ -153,10 +155,9 @@ profileEditButton.addEventListener("click", () => {
 addProfileButton.addEventListener("click", () => {
   openModal(cardModal);
 });
-
 // Event listener to handle profile form submission
 profileForm.addEventListener("submit", handleProfileEditSubmit);
-
+// Event listener to handle card form submission
 cardModalForm.addEventListener("submit", addCardFormSubmit);
 
 // Event listener to close the card modal

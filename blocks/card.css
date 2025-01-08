@@ -55,10 +55,12 @@
   opacity: 40%;
 }
 .card__like_button-active {
-  background-image: url(../images/active-like-button.svg);
-  background-color: #000;
+  background: url(../images/active-like-button.svg) center no-repeat;
+
   width: 21px;
   height: 18px;
   border: none;
   outline: none;
+
+  padding: 0;
 }
