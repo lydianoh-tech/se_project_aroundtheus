@@ -24,7 +24,7 @@ const initialCards = [
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lago.jpg",
   },
 ];
-// Query DOM elements
+// Query DOM elements:edit profile
 const profileEditButton = document.querySelector("#profile__edit-button");
 const profileModal = document.querySelector("#profile__modal");
 const profileForm = document.querySelector("#profile__form");
@@ -35,17 +35,20 @@ const profileTitleInput = document.querySelector("#modal__title-input");
 const profileDescriptionInput = document.querySelector(
   "#modal__description-input"
 );
+const addProfileButton = document.querySelector("#profile__add-button");
+
 const profileEditForm = profileModal.querySelector("#modal__form");
 
+//card modal
 const cardsListElement = document.querySelector("#cards__list");
 const cardTemplate = document
   .querySelector("#cards__template")
   .content.querySelector(".card");
-const addProfileButton = document.querySelector("#profile__add-button");
+
 const cardModal = document.querySelector("#card__modal");
 const cardModalForm = document.querySelector("#card__modal-form");
 const closeCardModalButton = cardModal.querySelector("#card__modal-close-icon");
-
+//image preview
 const imageModal = document.querySelector("#image__modal");
 const imageModalImage = imageModal.querySelector("#image__modal-image");
 const imageModalModalTitle = imageModal.querySelector("#image__modal-title");
@@ -66,14 +69,19 @@ function closeModal(pop) {
 // Function to open the image modal, setting the image source, alt, and title
 function openImageModal(imageSrc, imageTitle) {
   imageModalImage.src = imageSrc;
+
   imageModalImage.alt = imageTitle;
   imageModalModalTitle.textContent = imageTitle;
   openModal(imageModal);
 }
+// Function to close the modal
+function closeModal(pop) {
+  pop.classList.remove("modal_opened");
+}
 
 // Function to add a card element to the beginning of a container
-function getCardElement(cardElement, container) {
-  container.prepend(cardElement);
+function getCardElement(cardView, cardsListElement) {
+  cardsListElement.prepend(cardView);
 }
 // Function to create and configure a card element based on provided data
 function getCardView(data) {
@@ -87,21 +95,16 @@ function getCardView(data) {
   cardImageElement.src = data.link;
   cardImageElement.alt = data.name;
   cardTitleElement.textContent = data.name;
-  openModal(imageModal);
 
   // Add like button toggle functionality
-  const likeButtons = document.querySelectorAll(".card__like-button");
-  likeButtons.forEach((likeButton) => {
-    likeButton.addEventListener("click", () => {
-      likeButton.classList.toggle("card__like_button-active");
-    });
+  const likeButton = cardElement.querySelector(".card__like-button");
+  likeButton.addEventListener("click", () => {
+    likeButton.classList.toggle("card__like_button-active");
   });
 
   // Add functionality to open image modal on card image click
   cardImageElement.addEventListener("click", () => {
-    imageModalImage.src = data.link;
-    imageModalImage.alt = data.name;
-    openModal(imageModal);
+    openImageModal(data.link, data.name);
   });
 
   // Add functionality to delete the card
@@ -130,13 +133,14 @@ function addCardFormSubmit(e) {
   e.preventDefault();
 
   // Get card data and create the card view
-  const name = document.querySelector("#card__modal-name").value;
-  const link = document.querySelector("#card__modal-link").value;
+  const cardName = document.querySelector("#card__modal-name");
+  const cardLink = document.querySelector("#card__modal-link");
+  const CardInput = { name: cardName.value, link: cardLink.value };
 
   // Add the new card to the container
-  const cardElement = getCardView({ name, link });
-  getCardElement(cardElement, cardsListElement);
-  cardsListElement.prepend(getCardElement({ name, link }));
+
+  const cardElement = getCardView(CardInput);
+  cardsListElement.prepend(cardElement);
 
   // Close the card modal
 
@@ -172,5 +176,5 @@ imageCloseModalButton.addEventListener("click", () => closeModal(imageModal));
 // Initialize cards on the page from a predefined list
 initialCards.forEach((data) => {
   const cardView = getCardView(data); // Create a card element
-  getCardElement(cardView, cardsListElement); // Add it to the container
+  cardsListElement.prepend(cardView); // Add it to the container
 });
