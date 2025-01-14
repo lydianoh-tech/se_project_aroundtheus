@@ -31,10 +31,12 @@ const profileForm = document.querySelector("#profile__form");
 const modalCloseButton = profileModal.querySelector("#modal__close-icon");
 const profileTitle = document.querySelector("#profile__title");
 const profileDescription = document.querySelector("#profile__description");
+
 const profileTitleInput = document.querySelector("#modal__title-input");
 const profileDescriptionInput = document.querySelector(
   "#modal__description-input"
 );
+
 const addProfileButton = document.querySelector("#profile__add-button");
 
 const profileEditForm = profileModal.querySelector("#modal__form");
@@ -47,11 +49,13 @@ const cardTemplate = document
 
 const cardModal = document.querySelector("#card__modal");
 const cardModalForm = document.querySelector("#card__modal-form");
+const addCardmodal = document.querySelector("#card__modal-title");
 const closeCardModalButton = cardModal.querySelector("#card__modal-close-icon");
 //image preview
 const imageModal = document.querySelector("#image__modal");
 const imageModalImage = imageModal.querySelector("#image__modal-image");
-const imageModalModalTitle = imageModal.querySelector("#image__modal-title");
+const imageModalTitle = imageModal.querySelector("#image__modal-title");
+
 const imageCloseModalButton = imageModal.querySelector(
   "#image__modal_close-icon"
 );
@@ -71,7 +75,7 @@ function openImageModal(imageSrc, imageTitle) {
   imageModalImage.src = imageSrc;
 
   imageModalImage.alt = imageTitle;
-  imageModalModalTitle.textContent = imageTitle;
+  imageModalTitle.textContent = imageTitle;
   openModal(imageModal);
 }
 // Function to close the modal
@@ -99,7 +103,7 @@ function getCardView(data) {
   // Add like button toggle functionality
   const likeButton = cardElement.querySelector(".card__like-button");
   likeButton.addEventListener("click", () => {
-    likeButton.classList.toggle("card__like_button-active");
+    likeButton.classList.toggle("card__like-button_active");
   });
 
   // Add functionality to open image modal on card image click
@@ -136,7 +140,7 @@ function addCardFormSubmit(e) {
   const cardName = document.querySelector("#card__modal-name");
   const cardLink = document.querySelector("#card__modal-link");
   const CardInput = { name: cardName.value, link: cardLink.value };
-
+  addCardmodal.content;
   // Add the new card to the container
 
   const cardElement = getCardView(CardInput);
