@@ -55,7 +55,7 @@
   opacity: 40%;
 }
 .card__like-button_active {
-  background-image: url(../images/Group-likedbtn.svg);
+  background-image: transparent url(../images/Group-likedbtn.svg);
 
   opacity: 1;
 }
@@ -64,6 +64,7 @@
   width: 18px;
   height: 19.3px;
   background-image: url(../images/delete-button.svg);
+
   background-color: #000;
   border: none;
   background-size: contain;
