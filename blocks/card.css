@@ -55,7 +55,7 @@
   opacity: 40%;
 }
 .card__like-button_active {
-  background-image: transparent url(../images/Group-likedbtn.svg);
+  background-image: url(../images/Group-likedbtn.svg);
 
   opacity: 1;
 }
