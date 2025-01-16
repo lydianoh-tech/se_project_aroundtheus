@@ -60,40 +60,40 @@
     </div>
 
     <div class="modal" id="image__modal">
-      <div class="modal__container">
+      <div class="modal__container modal__container_preview">
         <button
           type="button"
           class="modal__close-icon image__modal_close-icon"
-          id="image__modal_close-icon"
+          id="image__close-icon"
         ></button>
-        <img src="" alt="" class="modal__image" id="image__modal-image" />
-        <h3 class="modal__image-title" id="image__modal-title"></h3>
+        <img src="" alt="" class="modal__image-link" id="image__link" />
+        <h3 class="modal__image-title" id="image__title"></h3>
       </div>
     </div>
 
-    <div class="modal" id="card__modal">
+    <div class="modal" id="add__card-modal">
       <div class="modal__container">
-        <form class="modal__form" name="modal__form" id="card__modal-form">
+        <form class="modal__form" name="modal__form" id="card__form">
           <button
             type="button"
             class="modal__close-icon"
-            id="card__modal-close-icon"
+            id="add__card-close-icon"
           ></button>
           <fieldset class="modal__fieldset">
-            <p class="modal__title" id="card__modal-title">New Place</p>
-            <label class="modal__label" for="card__modal-input">
+            <p class="modal__title" id="add__card-title">New Place</p>
+            <label class="modal__label" for="add__card-name">
               <input
                 type="text"
                 name="name"
                 class="modal__input"
-                id="card__modal-name"
+                id="add__card-name"
                 placeholder="Title"
             /></label>
-            <label class="modal__label" for="card__modal-input">
+            <label class="modal__label" for="add__card-linkt">
               <input
                 type="text"
                 class="modal__input"
-                id="card__modal-link"
+                id="add__card-link"
                 placeholder="Image link" /></label
             ><button type="submit" class="modal__submit-button">Create</button>
           </fieldset>
@@ -106,25 +106,25 @@
           <button
             type="button"
             class="modal__close-icon"
-            id="modal__close-icon"
+            id="profile__close-icon"
           ></button>
           <fieldset class="modal__fieldset">
-            <p class="modal__title" id="profile__modal-title">Edit Profile</p>
-            <label class="modal__label" for="modal__title-input">
+            <p class="modal__title" id="profile__title">Edit Profile</p>
+            <label class="modal__label" for="profile__title-input">
               <input
                 type="text"
                 name="name"
                 class="modal__input"
-                id="modal__title-input"
+                id="profile__title-input"
                 placeholder="Name"
                 required
             /></label>
-            <label class="modal__label" for="modal__description-input">
+            <label class="modal__label" for="profile__description-input">
               <input
                 type="text"
                 name="description"
                 class="modal__input"
-                id="modal__description-input"
+                id="profile__description-input"
                 placeholder="Description"
                 required
               /> </label

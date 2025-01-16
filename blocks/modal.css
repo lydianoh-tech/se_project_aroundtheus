@@ -17,6 +17,9 @@
   border-radius: 10px;
   position: relative;
 }
+.modal__container_preview {
+  background-color: transparent;
+}
 
 .modal__form {
   margin-top: 0;
@@ -56,6 +59,7 @@
   border: none;
   width: 358px;
   height: 17.34px;
+  cursor: pointer;
 }
 .modal__close-icon {
   border: none;
@@ -70,6 +74,7 @@
   padding: 0;
   cursor: pointer;
   background-color: transparent;
+  cursor: pointer;
 }
 .modal__submit-button {
   font-family: "Inter", Arial, Sans-serif;
@@ -83,6 +88,7 @@
   padding: 0;
   background-color: black;
   color: white;
+  cursor: pointer;
 }
 
 .modal__type-image {
@@ -95,7 +101,7 @@
   background-color: transparent;
 }
 
-.modal__image {
+.modal__image-link {
   max-width: 75vw;
   max-height: 75vh;
   object-fit: contain;
@@ -107,23 +113,30 @@
   font-weight: 400;
   font-size: 12px;
   line-height: 14.52px;
+  color: white;
 }
+.modal_opened {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: all;
+}
+
 @media screen and (max-width: 480px) {
   .modal__container {
     background-color: #ffff;
     margin: auto;
-
     border-radius: 10px;
     position: relative;
+  }
+  .modal__container_preview {
+    background-color: transparent;
   }
   .modal__form {
     width: 282px;
     height: 322px;
   }
-
   .modal__title {
     color: black;
-
     font-family: "Inter", Arial, Sans-serif;
     font-size: 18px;
     font-weight: 900;
@@ -142,7 +155,6 @@
     padding-right: 22px;
     padding-left: 22px;
   }
-
   .modal__input {
     font-family: "Inter", Arial, Sans-serif;
     font-weight: 400;
@@ -173,28 +185,30 @@
     color: white;
     margin-top: 45px;
   }
-}
+  .modal__image-link {
+    max-width: 75vw;
+    max-height: 75vh;
+    width: 100%;
+    height: 1;
+    object-fit: contain;
 
-.card__modal-fieldset {
-  margin: 0;
-  border: none;
-  padding-top: 25px;
-  padding-bottom: 25px;
-  padding-right: 22px;
-  padding-left: 22px;
-}
+    .modal__type-image {
+      width: 240px;
+      height: 299px;
+      margin-top: 136px;
+      margin-bottom: 133px;
+      margin-right: 40px;
+      margin-left: 40px;
+      background-color: transparent;
+    }
 
-.card__modal-input {
-  font-family: "Inter", Arial, Sans-serif;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 16.94px;
-  border: none;
-  width: 238px;
-  height: 27px;
-}
-.modal_opened {
-  visibility: visible;
-  opacity: 1;
-  pointer-events: all;
+    .modal__image-title {
+      width: 240px;
+      height: 12px;
+      font-family: "Inter", Arial, Sans-serif;
+      font-weight: 400;
+      font-size: 12px;
+      line-height: 14.52px;
+    }
+  }
 }

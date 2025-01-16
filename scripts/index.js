@@ -27,19 +27,17 @@ const initialCards = [
 // Query DOM elements:edit profile
 const profileEditButton = document.querySelector("#profile__edit-button");
 const profileModal = document.querySelector("#profile__modal");
-const profileForm = document.querySelector("#profile__form");
-const modalCloseButton = profileModal.querySelector("#modal__close-icon");
+
+const closeProfileButton = profileModal.querySelector("#profile__close-icon");
 const profileTitle = document.querySelector("#profile__title");
 const profileDescription = document.querySelector("#profile__description");
 
-const profileTitleInput = document.querySelector("#modal__title-input");
+const profileTitleInput = document.querySelector("#profile__title-input");
 const profileDescriptionInput = document.querySelector(
-  "#modal__description-input"
+  "#profile__description-input"
 );
 
 const addProfileButton = document.querySelector("#profile__add-button");
-
-const profileEditForm = profileModal.querySelector("#modal__form");
 
 //card modal
 const cardsListElement = document.querySelector("#cards__list");
@@ -47,20 +45,22 @@ const cardTemplate = document
   .querySelector("#cards__template")
   .content.querySelector(".card");
 
-const cardModal = document.querySelector("#card__modal");
-const cardModalForm = document.querySelector("#card__modal-form");
-const addCardmodal = document.querySelector("#card__modal-title");
-const closeCardModalButton = cardModal.querySelector("#card__modal-close-icon");
+//Query Dom forms
+const profileForm = document.forms.profile__form;
+const addCardForm = document.forms.card__form;
+
+const addCardModal = document.querySelector("#add__card-modal");
+
+const addCardmodal = document.querySelector("#add__card-title");
+const addCardCloseButton = addCardModal.querySelector("#add__card-close-icon");
 //image preview
 const imageModal = document.querySelector("#image__modal");
-const imageModalImage = imageModal.querySelector("#image__modal-image");
-const imageModalTitle = imageModal.querySelector("#image__modal-title");
+const imageLink = imageModal.querySelector("#image__link");
+const imageTitle = imageModal.querySelector("#image__title");
 
-const imageCloseModalButton = imageModal.querySelector(
-  "#image__modal_close-icon"
-);
+const imageCloseButton = imageModal.querySelector("#image__close-icon");
+
 // Function to open the modal by adding the "modal_opened" class
-
 function openModal(pop) {
   pop.classList.add("modal_opened");
 }
@@ -71,11 +71,14 @@ function closeModal(pop) {
 }
 
 // Function to open the image modal, setting the image source, alt, and title
-function openImageModal(imageSrc, imageTitle) {
-  imageModalImage.src = imageSrc;
+function openImageModal(data) {
+  imageLink.src = data.link;
+  /*  cardImageElement.src = data.link;
+  cardImageElement.alt = data.name;
+  cardTitleElement.textContent = data.name;*/
 
-  imageModalImage.alt = imageTitle;
-  imageModalTitle.textContent = imageTitle;
+  imageLink.alt = data.name;
+  imageTitle.textContent = data.name;
   openModal(imageModal);
 }
 // Function to close the modal
@@ -84,8 +87,8 @@ function closeModal(pop) {
 }
 
 // Function to add a card element to the beginning of a container
-function getCardElement(cardView, cardsListElement) {
-  cardsListElement.prepend(cardView);
+function getCardElement(ViewCard, cardsListElement) {
+  cardsListElement.prepend(ViewCard);
 }
 // Function to create and configure a card element based on provided data
 function getCardView(data) {
@@ -108,7 +111,7 @@ function getCardView(data) {
 
   // Add functionality to open image modal on card image click
   cardImageElement.addEventListener("click", () => {
-    openImageModal(data.link, data.name);
+    openImageModal(data);
   });
 
   // Add functionality to delete the card
@@ -137,8 +140,8 @@ function addCardFormSubmit(e) {
   e.preventDefault();
 
   // Get card data and create the card view
-  const cardName = document.querySelector("#card__modal-name");
-  const cardLink = document.querySelector("#card__modal-link");
+  const cardName = document.querySelector("#add__card-name");
+  const cardLink = document.querySelector("#add__card-link");
   const CardInput = { name: cardName.value, link: cardLink.value };
   addCardmodal.content;
   // Add the new card to the container
@@ -148,8 +151,8 @@ function addCardFormSubmit(e) {
 
   // Close the card modal
 
-  cardModalForm.reset(); // Reset the form fields
-  closeModal(cardModal); // Close the mod
+  addCardForm.reset(); // Reset the form fields
+  closeModal(addCardModal); // Close the modal
 }
 
 // Event listener to open the profile edit modal with current values pre-filled
@@ -161,24 +164,24 @@ profileEditButton.addEventListener("click", () => {
 
 // Event listener to open the card addition modal
 addProfileButton.addEventListener("click", () => {
-  openModal(cardModal);
+  openModal(addCardModal);
 });
 // Event listener to handle profile form submission
 profileForm.addEventListener("submit", handleProfileEditSubmit);
 // Event listener to handle card form submission
-cardModalForm.addEventListener("submit", addCardFormSubmit);
+addCardForm.addEventListener("submit", addCardFormSubmit);
 
 // Event listener to close the card modal
-closeCardModalButton.addEventListener("click", () => closeModal(cardModal));
+addCardCloseButton.addEventListener("click", () => closeModal(addCardModal));
 
 // Event listener to close the profile modal
-modalCloseButton.addEventListener("click", () => closeModal(profileModal));
+closeProfileButton.addEventListener("click", () => closeModal(profileModal));
 
 // Event listener to close the image modal
-imageCloseModalButton.addEventListener("click", () => closeModal(imageModal));
+imageCloseButton.addEventListener("click", () => closeModal(imageModal));
 
 // Initialize cards on the page from a predefined list
 initialCards.forEach((data) => {
-  const cardView = getCardView(data); // Create a card element
-  cardsListElement.prepend(cardView); // Add it to the container
+  const ViewCard = getCardView(data); // Create a card element
+  cardsListElement.prepend(ViewCard); // Add it to the container
 });
