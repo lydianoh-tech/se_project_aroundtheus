@@ -200,7 +200,7 @@
     position: absolute;
     top: -33px;
     right: -27px;
-
+  }
   .modal__submit-button {
     font-family: "Inter", Arial, Sans-serif;
     font-size: 14px;
@@ -242,5 +242,5 @@
       font-size: 12px;
       line-height: 14.52px;
     }
-  
+  }
 }
