@@ -41,7 +41,7 @@
 .modal__fieldset {
   margin: 0;
   border: none;
-  padding: 34px 36px 36.15px 36px;
+  padding: 48px 30px 36.15px 36px;
 }
 .modal__label {
   display: flex;
@@ -76,7 +76,7 @@
   background-color: transparent;
 }
 
-.image__modal_close-icon {
+.modal__close-icon_preview {
   width: 30px;
   height: 30px;
   background-image: url(../images/Close-Icon.svg);
@@ -87,8 +87,8 @@
   background-color: transparent;
   border: none;
   position: absolute;
-  top: -33px;
-  right: -25px;
+  top: -35px;
+  right: -35px;
 }
 .modal__submit-button {
   font-family: "Inter", Arial, Sans-serif;
@@ -191,9 +191,9 @@
     height: 26px;
     position: absolute;
     top: -45px;
-    right: 5px;
+    right: 45px;
   }
-  .image__modal_close-icon {
+  .modal__close-icon_preview {
     width: 30px;
     height: 30px;
 

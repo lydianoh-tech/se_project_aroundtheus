@@ -81,10 +81,6 @@ function openImageModal(data) {
   imageTitle.textContent = data.name;
   openModal(imageModal);
 }
-// Function to close the modal
-function closeModal(pop) {
-  pop.classList.remove("modal_opened");
-}
 
 // Function to add a card element to the beginning of a container
 function getCardElement(ViewCard, cardsListElement) {
