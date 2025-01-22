@@ -27,12 +27,13 @@ const initialCards = [
 // Query DOM elements:edit profile
 const profileEditButton = document.querySelector("#profile__edit-button");
 const profileModal = document.querySelector("#profile__modal");
+const profileModalTitle = document.querySelector("#modal__profile-title");
 
 const closeProfileButton = profileModal.querySelector("#profile__close-icon");
-const profileTitle = document.querySelector("#modal__profile-title");
+const profileName = document.querySelector("#profile__title");
 const profileDescription = document.querySelector("#profile__description");
 
-const profileTitleInput = document.querySelector("#profile__title-input");
+const profileNameInput = document.querySelector("#profile__name-input");
 const profileDescriptionInput = document.querySelector(
   "#profile__description-input"
 );
@@ -51,7 +52,7 @@ const addCardForm = document.forms.card__form;
 
 const addCardModal = document.querySelector("#add__card-modal");
 
-const addCardmodal = document.querySelector("#add__card-title");
+const addCardmodalTitle = document.querySelector("#add__card-title");
 const cardName = document.querySelector("#add__card-name");
 const cardLink = document.querySelector("#add__card-link");
 const addCardCloseButton = addCardModal.querySelector("#add__card-close-icon");
@@ -123,7 +124,7 @@ function handleProfileEditSubmit(e) {
   e.preventDefault(); // Prevent form's default submission behavior
 
   // Update profile title and description with input values
-  profileTitle.textContent = profileTitleInput.value;
+  profileName.textContent = profileNameInput.value;
   profileDescription.textContent = profileDescriptionInput.value;
 
   // Close the profile modal
@@ -131,7 +132,7 @@ function handleProfileEditSubmit(e) {
 }
 
 // Function to handle card addition form submission
-function handleAddCardFormSubmi(e) {
+function handleAddCardFormSubmit(e) {
   e.preventDefault();
 
   // Get card data and create the card view
@@ -151,7 +152,7 @@ function handleAddCardFormSubmi(e) {
 
 // Event listener to open the profile edit modal with current values pre-filled
 profileEditButton.addEventListener("click", () => {
-  profileTitleInput.value = profileTitle.textContent;
+  profileNameInput.value = profileName.textContent;
   profileDescriptionInput.value = profileDescription.textContent;
   openModal(profileModal);
 });
@@ -163,7 +164,7 @@ addProfileButton.addEventListener("click", () => {
 // Event listener to handle profile form submission
 profileForm.addEventListener("submit", handleProfileEditSubmit);
 // Event listener to handle card form submission
-addCardForm.addEventListener("submit", handleAddCardFormSubmi);
+addCardForm.addEventListener("submit", handleAddCardFormSubmit);
 
 // Event listener to close the card modal
 addCardCloseButton.addEventListener("click", () => closeModal(addCardModal));
