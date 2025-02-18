@@ -137,6 +137,29 @@
   opacity: 1;
   pointer-events: all;
 }
+.modal__error {
+  color: rgba(255, 0, 0, 0.7);
+}
+
+.modal__input_type_error {
+  border: 1px solid rgba(255, 0, 0, 0.6);
+}
+
+.modal__submit-button {
+  background-color: rgba(33, 33, 33, 1);
+  color: rgba(252, 245, 229, 1);
+  max-width: 156px;
+  height: 52px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.modal__submit-button_type_disabled {
+  background-color: rgba(33, 33, 33, 0.5);
+}
 
 @media screen and (max-width: 480px) {
   .modal__container {
