@@ -81,35 +81,44 @@
           ></button>
           <fieldset class="modal__fieldset">
             <p class="modal__title" id="add__card-title">New Place</p>
+
             <label class="modal__label" for="add__card-name">
               <input
                 type="text"
-                name="name"
+                name="title"
                 class="modal__input"
                 id="add__card-name"
                 placeholder="Title"
-                minlength="2"
-                maxlength="40"
-              /><span
-                class="modal__error"
-                id="add__card-title-input-error"
-              ></span>
+                required
+                minlength="1"
+                maxlength="30"
+              />
+              <span class="modal__error" id="add__card-name-error"></span>
             </label>
+
             <label class="modal__label" for="add__card-link">
               <input
-                type="text"
+                type="url"
+                name="image"
                 class="modal__input"
                 id="add__card-link"
-                placeholder="Image link" />
-              <span
-                class="modal__error"
-                id="add__card-link-input-error"
-              ></span></label
-            ><button type="submit" class="modal__submit-button">Create</button>
+                placeholder="Image link"
+                required
+              />
+              <span class="modal__error" id="add__card-link-error"></span>
+            </label>
+
+            <button
+              type="submit"
+              class="modal__submit-button modal__submit-button_type_disabled"
+            >
+              Create
+            </button>
           </fieldset>
         </form>
       </div>
     </div>
+
     <div class="modal" id="profile__modal">
       <div class="modal__container">
         <form
