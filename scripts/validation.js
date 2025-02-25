@@ -89,34 +89,18 @@ function enableValidation(options) {
   formList.forEach((formEle) => {
     formEle.addEventListener("submit", (evt) => {
       evt.preventDefault();
-      if (
-        hasInvalidInput([...formEle.querySelectorAll(options.inputSelector)])
-      ) {
-        return;
-      }
-      console.log("Form submitted successfully!");
     });
     setEventListeners(formEle, options);
   });
 }
 
-// Open modal and reset validation
-document.querySelectorAll(".modal").forEach((modal) => {
-  modal.addEventListener("click", (event) => {
-    if (event.target.classList.contains("modal")) {
-      closeModal(modal);
-    }
-  });
-});
-
 // Close modal with "Esc" key
-document.addEventListener("keydown", (event) => {
-  if (event.key === "Escape") {
-    document.querySelectorAll(".modal").forEach((modal) => {
-      closeModal(modal);
-    });
+function handleEscape(evt) {
+  if (evt.key === "Escape") {
+    const openModal = document.querySelector(".modal_opened"); // Find the open modal
+    closeModal(openModal);
   }
-});
+}
 
 // Function to close the modal
 function closeModal(modal) {

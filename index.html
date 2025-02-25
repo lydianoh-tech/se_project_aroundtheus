@@ -64,7 +64,7 @@
         <button
           type="button"
           class="modal__close-icon modal__close-icon_preview"
-          id="image__close-icon"
+          id="close__icon"
         ></button>
         <img src="" alt="" class="modal__image-link" id="image__link" />
         <h3 class="modal__image-title" id="image__title"></h3>
@@ -77,7 +77,7 @@
           <button
             type="button"
             class="modal__close-icon"
-            id="add__card-close-icon"
+            id="close__icon"
           ></button>
           <fieldset class="modal__fieldset">
             <p class="modal__title" id="add__card-title">New Place</p>
@@ -92,9 +92,8 @@
                 required
                 minlength="1"
                 maxlength="30"
-              />
-              <span class="modal__error" id="add__card-name-error"></span>
-            </label>
+              /> </label
+            ><span class="modal__error" id="add__card-name-error"></span>
 
             <label class="modal__label" for="add__card-link">
               <input
@@ -104,9 +103,8 @@
                 id="add__card-link"
                 placeholder="Image link"
                 required
-              />
-              <span class="modal__error" id="add__card-link-error"></span>
-            </label>
+              /> </label
+            ><span class="modal__error" id="add__card-link-error"></span>
 
             <button
               type="submit"
@@ -130,7 +128,7 @@
           <button
             type="button"
             class="modal__close-icon"
-            id="profile__close-icon"
+            id="close__icon"
           ></button>
           <fieldset class="modal__fieldset">
             <p class="modal__title" id="modal__profile-title">Edit Profile</p>
@@ -143,9 +141,10 @@
                 placeholder="Name"
                 required
                 minlength="2"
-                maxlength="40" />
-              <span class="modal__error" id="profile__name-input-error"> </span
-            ></label>
+                maxlength="40"
+              />
+            </label>
+            <span class="modal__error" id="profile__name-input-error"> </span>
             <label class="modal__label" for="profile__description-input">
               <input
                 type="text"
@@ -156,12 +155,12 @@
                 required
                 minlength="2"
                 maxlength="200"
-              />
-              <span
-                class="modal__error"
-                id="profile__description-input-error"
-              ></span> </label
-            ><button
+              /> </label
+            ><span
+              class="modal__error"
+              id="profile__description-input-error"
+            ></span>
+            <button
               type="submit"
               class="modal__submit-button modal__submit-button_type_disabled"
             >
