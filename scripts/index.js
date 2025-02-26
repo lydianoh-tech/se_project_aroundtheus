@@ -63,6 +63,7 @@ const imageTitle = imageModal.querySelector("#image__title");
 // Function to open the modal by adding the "modal_opened" class
 function openModal(pop) {
   pop.classList.add("modal_opened");
+  document.addEventListener("keydown", handleEscape);
 }
 
 // Function to close the modal by removing the "modal_opened" class
@@ -77,6 +78,14 @@ function openImageModal(data) {
   imageLink.alt = data.name;
   imageTitle.textContent = data.name;
   openModal(imageModal);
+}
+
+// Close modal with "Esc" key
+function handleEscape(evt) {
+  if (evt.key === "Escape") {
+    const openModal = document.querySelector(".modal_opened"); // Find the open modal
+    closeModal(openModal);
+  }
 }
 
 // Open modal and reset validation

@@ -94,13 +94,7 @@ function enableValidation(options) {
   });
 }
 
-// Close modal with "Esc" key
-function handleEscape(evt) {
-  if (evt.key === "Escape") {
-    const openModal = document.querySelector(".modal_opened"); // Find the open modal
-    closeModal(openModal);
-  }
-}
+
 
 // Function to close the modal
 function closeModal(modal) {

@@ -139,6 +139,7 @@
 }
 .modal__error {
   border-top: 1px solid red;
+  position: absolute;
 }
 
 .modal__error_visible {
