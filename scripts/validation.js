@@ -94,12 +94,5 @@ function enableValidation(options) {
   });
 }
 
-
-
-// Function to close the modal
-function closeModal(modal) {
-  modal.classList.remove("modal_opened");
-}
-
 // Enable validation
 enableValidation(objects);

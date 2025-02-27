@@ -85,6 +85,8 @@ function handleEscape(evt) {
   if (evt.key === "Escape") {
     const openModal = document.querySelector(".modal_opened"); // Find the open modal
     closeModal(openModal);
+
+    closeModal(modal);
   }
 }
 
