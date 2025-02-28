@@ -69,6 +69,7 @@ function openModal(pop) {
 // Function to close the modal by removing the "modal_opened" class
 function closeModal(pop) {
   pop.classList.remove("modal_opened");
+  document.removeEventListener("keydown", handleEscape);
 }
 
 // Function to open the image modal, setting the image source, alt, and title
@@ -85,8 +86,6 @@ function handleEscape(evt) {
   if (evt.key === "Escape") {
     const openModal = document.querySelector(".modal_opened"); // Find the open modal
     closeModal(openModal);
-
-    closeModal(modal);
   }
 }
 
