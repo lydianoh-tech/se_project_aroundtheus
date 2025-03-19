@@ -108,7 +108,8 @@ function getCardElement(viewCard, cardsListElement) {
 // Function to create and configure a card element based on provided data
 function getCardView(data) {
   // Clone the card template
-  const cardElement = cardTemplate.cloneNode(true);
+  // const cardElement = cardTemplate.cloneNode(true);
+  const cardElement = new Card(data, "#cards__template").generateCard();
 
   // Set card image source, alt text, and title
   const cardImageElement = cardElement.querySelector(".card__image");

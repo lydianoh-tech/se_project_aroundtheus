@@ -140,6 +140,11 @@
 .modal__error {
   border-top: 1px solid red;
   position: absolute;
+  font-family: "Inter", Arial, Sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 100%;
+  letter-spacing: 0%;
 }
 
 .modal__error_visible {
