@@ -90,11 +90,11 @@ function closeModal(pop) {
 }
 
 // Function to open the image modal, setting the image source, alt, and title
-function handleImageClick(data) {
-  imageLink.src = data.link;
+function handleImageClick(name, link) {
+  imageLink.src = link;
 
-  imageLink.alt = data.name;
-  imageTitle.textContent = data.name;
+  imageLink.alt = name;
+  imageTitle.textContent = name;
   openModal(imageModal);
 }
 
@@ -119,38 +119,7 @@ document.querySelectorAll(".modal").forEach((modal) => {
 function getCardElement(viewCard, cardsListElement) {
   cardsListElement.prepend(viewCard);
 }
-//Function to create and configure a card element based on provided data
-// function getCardView(data) {
-//   // Clone the card template
-//   // const cardElement = cardTemplate.cloneNode(true);
-//   const cardElement = new Card(data, "#cards__template").generateCard();
 
-//   // Set card image source, alt text, and title
-//   const cardImageElement = cardElement.querySelector(".card__image");
-//   const cardTitleElement = cardElement.querySelector(".card__title");
-
-//   cardImageElement.src = data.link;
-//   cardImageElement.alt = data.name;
-//   cardTitleElement.textContent = data.name;
-
-//   // Add like button toggle functionality
-//   // const likeButton = cardElement.querySelector(".card__like-button");
-//   // likeButton.addEventListener("click", () => {
-//   //   likeButton.classList.toggle("card__like-button_active");
-//   // });
-
-//   // Add functionality to open image modal on card image click
-//   cardImageElement.addEventListener("click", () => {
-//     openImageModal(data);
-//   });
-
-//   // Add functionality to delete the card
-//   const deleteButton = cardElement.querySelector(".card__delete-button");
-//   deleteButton.addEventListener("click", () => {
-//     cardElement.remove();
-//   });
-
-//   return cardElement;
 // }
 function getCardView(data) {
   const cardElement = new Card(data, "#cards__template", handleImageClick);
@@ -219,3 +188,9 @@ initialCards.forEach((data) => {
   const viewCard = getCardView(data); // Create a card element
   cardsListElement.prepend(viewCard); // Add it to the container
 });
+function renderCard(item, method = "apend") {
+  const cardElement = getCardView(item);
+  // Add the card into the section using the method
+  cardsListElement[method](cardElement);
+}
+renderCard(item);
