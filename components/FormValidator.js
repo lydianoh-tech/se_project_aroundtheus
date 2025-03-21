@@ -51,12 +51,18 @@ export default class FormValidator {
       (inputElement) => inputElement.validity.valid
     );
     if (isValid) {
+      console.log("did this fire too");
       this._submitButton.classList.remove(this._inactiveButtonClass);
       this._submitButton.disabled = false;
     } else {
-      this._submitButton.classList.add(this._inactiveButtonClass);
-      this._submitButton.disabled = true;
+      this.disableButton();
     }
+  }
+
+  disableButton() {
+    console.log("did this fire");
+    this._submitButton.classList.add(this._inactiveButtonClass);
+    this._submitButton.disabled = true;
   }
 
   _setEventListeners() {

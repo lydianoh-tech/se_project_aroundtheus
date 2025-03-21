@@ -63,6 +63,20 @@ const imageModal = document.querySelector("#image__modal");
 const imageLink = imageModal.querySelector("#image__link");
 const imageTitle = imageModal.querySelector("#image__title");
 
+const FormValidatorObjects = {
+  formSelector: ".modal__form",
+  inputSelector: ".modal__input",
+  submitButtonSelector: ".modal__submit-button",
+  inactiveButtonClass: "modal__submit-button_type_disabled",
+  inputErrorClass: "popup__input_type_error",
+  errorClass: "modal__error",
+};
+const addFormValidator = new FormValidator(FormValidatorObjects, addCardForm);
+addFormValidator.enableValidation();
+
+const editFormValidator = new FormValidator(FormValidatorObjects, profileForm);
+editFormValidator.enableValidation();
+
 // Function to open the modal by adding the "modal_opened" class
 function openModal(pop) {
   pop.classList.add("modal_opened");
@@ -76,7 +90,7 @@ function closeModal(pop) {
 }
 
 // Function to open the image modal, setting the image source, alt, and title
-function openImageModal(data) {
+function handleImageClick(data) {
   imageLink.src = data.link;
 
   imageLink.alt = data.name;
@@ -105,40 +119,44 @@ document.querySelectorAll(".modal").forEach((modal) => {
 function getCardElement(viewCard, cardsListElement) {
   cardsListElement.prepend(viewCard);
 }
-// Function to create and configure a card element based on provided data
+//Function to create and configure a card element based on provided data
+// function getCardView(data) {
+//   // Clone the card template
+//   // const cardElement = cardTemplate.cloneNode(true);
+//   const cardElement = new Card(data, "#cards__template").generateCard();
+
+//   // Set card image source, alt text, and title
+//   const cardImageElement = cardElement.querySelector(".card__image");
+//   const cardTitleElement = cardElement.querySelector(".card__title");
+
+//   cardImageElement.src = data.link;
+//   cardImageElement.alt = data.name;
+//   cardTitleElement.textContent = data.name;
+
+//   // Add like button toggle functionality
+//   // const likeButton = cardElement.querySelector(".card__like-button");
+//   // likeButton.addEventListener("click", () => {
+//   //   likeButton.classList.toggle("card__like-button_active");
+//   // });
+
+//   // Add functionality to open image modal on card image click
+//   cardImageElement.addEventListener("click", () => {
+//     openImageModal(data);
+//   });
+
+//   // Add functionality to delete the card
+//   const deleteButton = cardElement.querySelector(".card__delete-button");
+//   deleteButton.addEventListener("click", () => {
+//     cardElement.remove();
+//   });
+
+//   return cardElement;
+// }
 function getCardView(data) {
-  // Clone the card template
-  // const cardElement = cardTemplate.cloneNode(true);
-  const cardElement = new Card(data, "#cards__template").generateCard();
+  const cardElement = new Card(data, "#cards__template", handleImageClick);
 
-  // Set card image source, alt text, and title
-  const cardImageElement = cardElement.querySelector(".card__image");
-  const cardTitleElement = cardElement.querySelector(".card__title");
-
-  cardImageElement.src = data.link;
-  cardImageElement.alt = data.name;
-  cardTitleElement.textContent = data.name;
-
-  // Add like button toggle functionality
-  const likeButton = cardElement.querySelector(".card__like-button");
-  likeButton.addEventListener("click", () => {
-    likeButton.classList.toggle("card__like-button_active");
-  });
-
-  // Add functionality to open image modal on card image click
-  cardImageElement.addEventListener("click", () => {
-    openImageModal(data);
-  });
-
-  // Add functionality to delete the card
-  const deleteButton = cardElement.querySelector(".card__delete-button");
-  deleteButton.addEventListener("click", () => {
-    cardElement.remove();
-  });
-
-  return cardElement;
+  return cardElement.generateCard();
 }
-
 // Function to handle profile edit form submission
 function handleProfileEditSubmit(e) {
   e.preventDefault(); // Prevent form's default submission behavior
@@ -168,6 +186,7 @@ function handleAddCardFormSubmit(e) {
 
   addCardForm.reset(); // Reset the form fields
   closeModal(addCardModal); // Close the modal
+  addFormValidator.disableButton();
 }
 
 // Event listener to open the profile edit modal with current values pre-filled
@@ -200,15 +219,3 @@ initialCards.forEach((data) => {
   const viewCard = getCardView(data); // Create a card element
   cardsListElement.prepend(viewCard); // Add it to the container
 });
-const FormValidatorObjects = {
-  formSelector: ".modal__form",
-  inputSelector: ".modal__input",
-  submitButtonSelector: ".modal__submit-button",
-  inactiveButtonClass: "popup__button_disabled",
-  inputErrorClass: "popup__input_type_error",
-  errorClass: "modal__error",
-};
-const addFormValidator = new FormValidator(FormValidatorObjects, profileForm);
-addFormValidator.enableValidation();
-const editFormValidator = new FormValidator(FormValidatorObjects, addCardForm);
-editFormValidator.enableValidation();

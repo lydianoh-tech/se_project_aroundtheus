@@ -241,26 +241,26 @@
     max-height: 75vh;
 
     object-fit: contain;
+  }
 
-    .modal__type-image {
-      width: 240px;
-      height: 299px;
-      margin-top: 136px;
-      margin-bottom: 133px;
-      margin-right: 40px;
-      margin-left: 40px;
-      background-color: transparent;
-    }
+  .modal__type-image {
+    width: 240px;
+    height: 299px;
+    margin-top: 136px;
+    margin-bottom: 133px;
+    margin-right: 40px;
+    margin-left: 40px;
+    background-color: transparent;
+  }
 
-    .modal__image-title {
-      width: 240px;
-      height: 12px;
-      margin-top: 10px;
+  .modal__image-title {
+    width: 240px;
+    height: 12px;
+    margin-top: 10px;
 
-      font-family: "Inter", Arial, Sans-serif;
-      font-weight: 400;
-      font-size: 12px;
-      line-height: 14.52px;
-    }
+    font-family: "Inter", Arial, Sans-serif;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 14.52px;
   }
 }
