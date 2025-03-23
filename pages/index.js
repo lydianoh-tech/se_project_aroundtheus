@@ -181,17 +181,11 @@ closeButtons.forEach((button) => {
 });
 
 // Initialize cards on the page from a predefined list
+// delete this line
 initialCards.forEach((data) => {
-  initialCards.forEach((data) => {
-    renderCard(data); // like this
-  });
-
-  function renderCard(item, method = "append") {
-    const cardElement = getCardView(item);
-    // Add the card into the section using the method
-    cardsListElement[method](cardElement);
-  }
+  renderCard(data); //
 });
+
 function renderCard(item, method = "append") {
   const cardElement = getCardView(item);
   // Add the card into the section using the method
