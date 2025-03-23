@@ -60,7 +60,6 @@ export default class FormValidator {
   }
 
   disableButton() {
-    console.log("did this fire");
     this._submitButton.classList.add(this._inactiveButtonClass);
     this._submitButton.disabled = true;
   }

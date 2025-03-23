@@ -142,15 +142,12 @@ function handleProfileEditSubmit(e) {
 function handleAddCardFormSubmit(e) {
   e.preventDefault();
 
-  // Get card data and create the card view
-
   const cardInput = { name: cardName.value, link: cardLink.value };
 
   // Add the new card to the container
+  renderCard(cardInput, "prepend"); // add `prepend` here to insert the card to the start of the section
 
-  const cardElement = getCardView(cardInput);
-  cardsListElement.prepend(cardElement);
-
+  addCardForm.reset();
   // Close the card modal
 
   addCardForm.reset(); // Reset the form fields
@@ -185,12 +182,18 @@ closeButtons.forEach((button) => {
 
 // Initialize cards on the page from a predefined list
 initialCards.forEach((data) => {
-  const viewCard = getCardView(data); // Create a card element
-  cardsListElement.prepend(viewCard); // Add it to the container
+  initialCards.forEach((data) => {
+    renderCard(data); // like this
+  });
+
+  function renderCard(item, method = "append") {
+    const cardElement = getCardView(item);
+    // Add the card into the section using the method
+    cardsListElement[method](cardElement);
+  }
 });
-function renderCard(item, method = "apend") {
+function renderCard(item, method = "append") {
   const cardElement = getCardView(item);
   // Add the card into the section using the method
   cardsListElement[method](cardElement);
 }
-renderCard(item);
