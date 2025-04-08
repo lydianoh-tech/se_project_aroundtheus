@@ -9,7 +9,6 @@
     <meta name="keywords" content="HTML, CSS, JavaScript" />
     <meta name="author" content="Lydia Noh" />
 
-    <link rel="stylesheet" href="./pages/index.css" />
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
 
     <title>Around The US</title>
@@ -18,7 +17,7 @@
     <div class="page__content">
       <header class="header page__section">
         <img
-          src="./images/logo.svg"
+          src="<%= require('./images/logo.svg')%>"
           alt="The header logo"
           class="header__logo"
         />
@@ -27,7 +26,9 @@
         <section class="profile">
           <div class="profile__image-frame">
             <img
-              src="./images/jacques-cousteau.jpg "
+              src="<%= require('./images/jacques-cousteau.jpg'
+              )
+              %>"
               alt="The image of jacques-cousteau"
               class="profile__image"
             />
@@ -166,7 +167,7 @@
         <img src="" alt="" class="card__image" />
 
         <img
-          src="./images/Group.svg"
+          src="<%= require('./images/Group.svg')%>"
           alt="delete top lid"
           class="card__delete-button"
           id="card__delete-button"
@@ -178,9 +179,5 @@
         </div>
       </li>
     </template>
-
-    <script defer type="module" src="./pages/index.js"></script>
-    <script defer type="module" src="./components/Card.js"></script>
-    <script defer type="module" src="./components/FormValidator.js"></script>
   </body>
 </html>
