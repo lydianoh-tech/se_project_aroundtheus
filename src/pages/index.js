@@ -1,3 +1,5 @@
+import "./index.css";
+
 import Section from "../components/Section.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 import PopupWithForm from "../components/PopupWithForm.js";
@@ -41,10 +43,10 @@ const imageLink = imageModal.querySelector("#image__link");
 const imageTitle = imageModal.querySelector("#image__title");
 
 const userInfo = new UserInfo({
-  nameSelector: ".profile__name",
-  jobSelector: ".profile__description",
+  nameSelector: "#profile__title",
+  jobSelector: "#profile__description",
 });
-const imagePopup = new PopupWithImage("#preview__modal");
+const imagePopup = new PopupWithImage("#image__modal");
 imagePopup.setEventListeners();
 
 const profileFormPopup = new PopupWithForm("#profile__modal", (data) => {
@@ -79,7 +81,7 @@ const section = new Section(
       console.log(item);
     },
   },
-  ".cards__list"
+  "#cards__list"
 );
 
 section.renderItems();

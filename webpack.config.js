@@ -42,7 +42,7 @@ module.exports = {
           },
           // add postcss-loader
           "postcss-loader",
-          "style-loader",
+          // "style-loader",
         ],
       },
       {

@@ -25,7 +25,7 @@ const initialCards = [
   },
 ];
 
-export const FormValidatorObjects = {
+const FormValidatorObjects = {
   formSelector: ".modal__form",
   inputSelector: ".modal__input",
   submitButtonSelector: ".modal__submit-button",
@@ -33,3 +33,4 @@ export const FormValidatorObjects = {
   inputErrorClass: "popup__input_type_error",
   errorClass: "modal__error",
 };
+export { initialCards, FormValidatorObjects };
