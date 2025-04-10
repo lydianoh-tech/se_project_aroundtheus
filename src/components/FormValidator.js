@@ -87,3 +87,4 @@ export default class FormValidator {
     this._toggleButtonState();
   }
 }
+export { FormValidator };

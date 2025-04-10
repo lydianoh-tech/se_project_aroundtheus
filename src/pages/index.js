@@ -5,6 +5,7 @@ import PopupWithImage from "../components/PopupWithImage.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 import UserInfo from "../components/UserInfo.js";
 import Card from "../components/Card.js";
+import FormValidator from "../components/FormValidator.js";
 import { initialCards, FormValidatorObjects } from "../utils/constants.js";
 
 const profileEditButton = document.querySelector("#profile__edit-button");
@@ -48,6 +49,7 @@ const userInfo = new UserInfo({
 });
 const imagePopup = new PopupWithImage("#image__modal");
 imagePopup.setEventListeners();
+console.log(imagePopup);
 
 const profileFormPopup = new PopupWithForm("#profile__modal", (data) => {
   userInfo.setUserInfo({
@@ -56,6 +58,7 @@ const profileFormPopup = new PopupWithForm("#profile__modal", (data) => {
   });
   profileFormPopup.close();
 });
+
 profileFormPopup.setEventListeners();
 
 const addCardPopup = new PopupWithForm("#add__card-modal", (data) => {
@@ -72,6 +75,20 @@ function createCard(data) {
   return card.generateCard();
 }
 
+// Instantiate FormValidator for the profile form
+const formValidatorProfile = new FormValidator(
+  FormValidatorObjects,
+  profileForm
+);
+formValidatorProfile.enableValidation();
+
+// Instantiate FormValidator for the add card form
+const formValidatorAddCard = new FormValidator(
+  FormValidatorObjects,
+  addCardForm
+);
+formValidatorAddCard.enableValidation();
+
 const section = new Section(
   {
     items: initialCards,
@@ -85,3 +102,11 @@ const section = new Section(
 );
 
 section.renderItems();
+
+//Event listeners
+profileEditButton.addEventListener("click", () => {
+  profileFormPopup.open();
+});
+addProfileButton.addEventListener("click", () => {
+  addCardPopup.open();
+});
