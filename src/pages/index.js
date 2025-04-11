@@ -62,10 +62,15 @@ const profileFormPopup = new PopupWithForm("#profile__modal", (data) => {
 profileFormPopup.setEventListeners();
 
 const addCardPopup = new PopupWithForm("#add__card-modal", (data) => {
-  const cardElement = createCard(data);
+  const cardElement = createCard({
+    name: data.title,
+    link: data.image,
+  });
   section.addItem(cardElement);
   addCardPopup.close();
+  formValidators["card__form"].disableButton(); // Disable the button after submission
 });
+
 addCardPopup.setEventListeners();
 
 function createCard(data) {
@@ -75,27 +80,12 @@ function createCard(data) {
   return card.generateCard();
 }
 
-// Instantiate FormValidator for the profile form
-const formValidatorProfile = new FormValidator(
-  FormValidatorObjects,
-  profileForm
-);
-formValidatorProfile.enableValidation();
-
-// Instantiate FormValidator for the add card form
-const formValidatorAddCard = new FormValidator(
-  FormValidatorObjects,
-  addCardForm
-);
-formValidatorAddCard.enableValidation();
-
 const section = new Section(
   {
     items: initialCards,
     renderer: (item) => {
       const cardElement = createCard(item);
       section.addItem(cardElement);
-      console.log(item);
     },
   },
   "#cards__list"
@@ -103,10 +93,30 @@ const section = new Section(
 
 section.renderItems();
 
-//Event listeners
 profileEditButton.addEventListener("click", () => {
+  const userData = userInfo.getUserInfo();
+  profileFormPopup.setInputValues({
+    name: userData.name,
+    description: userData.job,
+  });
   profileFormPopup.open();
 });
+
 addProfileButton.addEventListener("click", () => {
   addCardPopup.open();
 });
+
+// Universal form validators
+const formValidators = {};
+
+const enableValidation = (config) => {
+  const formList = Array.from(document.querySelectorAll(config.formSelector));
+  formList.forEach((formElement) => {
+    const validator = new FormValidator(config, formElement);
+    const formName = formElement.getAttribute("name");
+    formValidators[formName] = validator;
+    validator.enableValidation();
+  });
+};
+
+enableValidation(FormValidatorObjects);

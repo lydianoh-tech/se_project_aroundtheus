@@ -1,4 +1,3 @@
-import { FormValidatorObjects } from "../utils/constants.js";
 import Popup from "./Popup.js";
 
 export default class PopupWithForm extends Popup {
@@ -17,16 +16,23 @@ export default class PopupWithForm extends Popup {
     return values;
   }
 
+  setInputValues(data) {
+    this._inputList.forEach((input) => {
+      input.value = data[input.name];
+    });
+  }
+
   setEventListeners() {
     super.setEventListeners();
     this._form.addEventListener("submit", (evt) => {
       evt.preventDefault();
       this._handleFormSubmit(this._getInputValues());
+      this._form.reset();
+      this.close();
     });
   }
 
   close() {
     super.close();
-    this._form.reset();
   }
 }
