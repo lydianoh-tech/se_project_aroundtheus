@@ -49,7 +49,6 @@ const userInfo = new UserInfo({
 });
 const imagePopup = new PopupWithImage("#image__modal");
 imagePopup.setEventListeners();
-console.log(imagePopup);
 
 const profileFormPopup = new PopupWithForm("#profile__modal", (data) => {
   userInfo.setUserInfo({
@@ -60,18 +59,6 @@ const profileFormPopup = new PopupWithForm("#profile__modal", (data) => {
 });
 
 profileFormPopup.setEventListeners();
-
-const addCardPopup = new PopupWithForm("#add__card-modal", (data) => {
-  const cardElement = createCard({
-    name: data.title,
-    link: data.image,
-  });
-  section.addItem(cardElement);
-  addCardPopup.close();
-  formValidators["card__form"].disableButton(); // Disable the button after submission
-});
-
-addCardPopup.setEventListeners();
 
 function createCard(data) {
   const card = new Card(data, "#cards__template", () => {
@@ -120,3 +107,18 @@ const enableValidation = (config) => {
 };
 
 enableValidation(FormValidatorObjects);
+
+const addCardPopup = new PopupWithForm("#add__card-modal", (data) => {
+  const cardElement = createCard({
+    name: data.title,
+    link: data.image,
+  });
+  section.addItem(cardElement);
+  addCardPopup.close();
+
+  // Disable the submit button after adding a card
+  const formName = addCardForm.getAttribute("name");
+  formValidators[formName].disableButton();
+});
+
+addCardPopup.setEventListeners();
