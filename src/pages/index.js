@@ -7,7 +7,51 @@ import UserInfo from "../components/UserInfo.js";
 import Card from "../components/Card.js";
 import FormValidator from "../components/FormValidator.js";
 import { initialCards, FormValidatorObjects } from "../utils/constants.js";
+import Api from "../components/Api.js";
 
+const api = new Api({
+  baseUrl: "https://around-api.en.tripleten-services.com/v1/cards",
+
+  headers: {
+    authorization: "c56e30dc-2883-4270-a59e-b2f7bae969c6",
+    "Content-Type": "application/json",
+  },
+});
+
+// Fetch initial cards
+api
+  .getInitialCards()
+  .then((cards) => {
+    const section = new Section(
+      {
+        items: cards,
+        renderer: (item) => {
+          const cardElement = createCard(item);
+          section.addItem(cardElement);
+        },
+      },
+      "#cards__list"
+    );
+    section.renderItems();
+  })
+  .catch((err) => {
+    console.error("Error fetching initial cards:", err);
+  });
+
+// Fetch user info
+api
+  .getUserInfo()
+  .then((userData) => {
+    userInfo.setUserInfo({
+      name: userData.name,
+      job: userData.about,
+    });
+  })
+  .catch((err) => {
+    console.error("Error fetching user info:", err);
+  });
+
+//Query Dom elements
 const profileEditButton = document.querySelector("#profile__edit-button");
 const profileModal = document.querySelector("#profile__modal");
 const profileModalTitle = document.querySelector("#modal__profile-title");
