@@ -1,9 +1,12 @@
 export default class Card {
-  constructor(data, cardSelector, handleImageClick) {
+  constructor(data, cardSelector, handleImageClick, handleDeleteClick) {
+    this._data = data;
+    this._id = data._id || data.id;
     this._name = data.name;
     this._link = data.link;
     this._cardSelector = cardSelector;
     this._handleImageClick = handleImageClick;
+    this.handleDeleteClick = data.handleDeleteClick;
   }
   _getTemplate() {
     const cardElement = document
@@ -21,9 +24,13 @@ export default class Card {
     this._likeButton.addEventListener("click", () => {
       this._likeButton.classList.toggle("card__like-button_active");
     });
+
     this._deleteButton.addEventListener("click", () => {
-      this._element.remove();
-      this._element = null;
+      if (this._data._id) {
+        this._handleDeleteClick(this._data._id, this._element);
+      } else {
+        console.error("Card ID is undefined");
+      }
     });
   }
   generateCard() {

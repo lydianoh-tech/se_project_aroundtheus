@@ -21,6 +21,14 @@
   background-color: transparent;
 }
 
+.delete__card-modal {
+  width: 430px;
+  height: 181px;
+  margin-top: 270px;
+  margin-bottom: 269px;
+  margin-right: 425px;
+  margin-left: 425px;
+}
 .modal__form {
   margin-top: 0;
   width: 430px;
