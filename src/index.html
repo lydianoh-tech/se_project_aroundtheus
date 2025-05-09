@@ -24,7 +24,19 @@
       </header>
       <main class="content page__section">
         <section class="profile">
-          <div class="profile__image-frame">
+          <div class="profile__image-frame" id="profile__image-frame">
+            <div class="profile__avatar-container">
+              <img
+                src="<%= require('./images/edit-avatar.svg')%>"
+                alt="edit profile picture"
+                class="profile__avatar-edit-icon"
+              <button
+                type="button"
+                class="profile__avatar-edit-button"
+                id="profile__avatar-edit-button"
+              ></button>
+            </div>
+
             <img
               src="<%= require('./images/jacques-cousteau.jpg'
               )
@@ -59,33 +71,83 @@
         <p class="footer__copyright">&copy;2022 Around The U.S.</p>
       </footer>
     </div>
+    <div class="modal" id="update__avatar-modal">
+      <div class="modal__container">
+        <form
+          class="modal__form"
+          name="modal__form"
+          id="update__avatar-form"
+          novalidate
+        >
+          <button
+            type="button"
+            class="modal__close-icon"
+            id="close__icon"
+          ></button>
+          <fieldset class="modal__fieldset">
+            <p class="modal__title" id="modal__profile-title">
+              Change Profile Picture
+            </p>
+            <label class="modal__label" for="update__avatar-input">
+              <input
+                type="url"
+                name="avatar"
+                class="modal__input"
+                id="update__avatar-input"
+                placeholder=""
+                required
+                minlength="2"
+                maxlength="40"
+              />
+            </label>
+            <span class="modal__error" id="update__avatar-input-error"> </span>
+
+            <button type="submit" class="modal__submit-button">Save</button>
+          </fieldset>
+        </form>
+      </div>
+    </div>
 
     <div class="modal" id="image__modal">
       <div class="modal__container modal__container_preview">
-        <button
-          type="button"
-          class="modal__close-icon modal__close-icon_preview"
-          id="close__icon"
-        ></button>
-        <img src="" alt="" class="modal__image-link" id="image__link" />
-        <h3 class="modal__image-title" id="image__title"></h3>
+        <form
+          class="modal__form"
+          name="modal__form"
+          id="image__form"
+          novalidate
+        >
+          <button
+            type="button"
+            class="modal__close-icon modal__close-icon_preview"
+            id="close__icon"
+          ></button>
+          <img src="" alt="" class="modal__image-link" id="image__link" />
+          <h3 class="modal__image-title" id="image__title"></h3>
+        </form>
       </div>
     </div>
     <div class="modal" id="delete__card-modal">
       <div class="modal__container">
-        <button
-          type="button"
-          class="modal__close-icon"
-          id="delete-card-close-icon"
-        ></button>
-        <p class="modal__title">Are you sure?</p>
-        <button
-          type="button"
-          class="modal__submit-button"
-          id="delete-card-confirm"
+        <form
+          class="modal__form"
+          name="modal__form"
+          id="delete__card_form"
+          novalidate
         >
-          Yes
-        </button>
+          <button
+            type="submit"
+            class="modal__close-icon"
+            id="delete-card-close-icon"
+          ></button>
+          <p class="modal__title">Are you sure?</p>
+          <button
+            type="submit"
+            class="modal__submit-button"
+            id="delete-card-confirm"
+          >
+            Yes
+          </button>
+        </form>
       </div>
     </div>
 

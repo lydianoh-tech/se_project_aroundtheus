@@ -3,6 +3,7 @@
   align-items: center;
   padding-top: 40px;
   width: 100%;
+  position: relative;
 }
 
 .profile__info {
@@ -15,6 +16,40 @@
   align-items: baseline;
   grid-gap: 7px 17px;
   width: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.profile__avatar-container {
+  width: 120px;
+  height: 120px;
+  grid-area: avatar;
+  background-color: rgba(0, 0, 0, 0.5);
+  margin-left: 23px;
+  position: absolute;
+}
+
+.profile__avatar-edit-button {
+  background-size: contain;
+  width: 26px;
+  height: 26px;
+  grid-area: button;
+  border: none;
+  padding: 0;
+  margin: 47px;
+}
+.profile__avatar-edit-button:hover {
+  cursor: pointer;
+  opacity: 60%;
+}
+.profile__avatar-edit-icon {
+  width: 26px;
+  height: 26px;
+  margin: 47px;
+  object-fit: contain;
+  background-repeat: no-repeat;
+  background-size: contain;
+  padding: 0;
+  cursor: pointer;
+  background-color: transparent;
 }
 .profile__title {
   grid-area: title;
