@@ -26,10 +26,8 @@
         <section class="profile">
           <div class="profile__image-frame" id="profile__image-frame">
             <div class="profile__avatar-container">
-              <img
-                src="<%= require('./images/edit-avatar.svg')%>"
-                alt="edit profile picture"
-                class="profile__avatar-edit-icon"
+              <img src="<%= require('./images/edit-avatar.svg')%>" alt="edit
+              profile picture" class="profile__avatar-edit-icon"/
               <button
                 type="button"
                 class="profile__avatar-edit-button"
@@ -94,7 +92,7 @@
                 name="avatar"
                 class="modal__input"
                 id="update__avatar-input"
-                placeholder=""
+                placeholder="Image URL"
                 required
                 minlength="2"
                 maxlength="40"
@@ -129,7 +127,7 @@
     <div class="modal" id="delete__card-modal">
       <div class="modal__container">
         <form
-          class="modal__form"
+          class="modal__form delete__card-form"
           name="modal__form"
           id="delete__card_form"
           novalidate
@@ -139,14 +137,16 @@
             class="modal__close-icon"
             id="delete-card-close-icon"
           ></button>
-          <p class="modal__title">Are you sure?</p>
-          <button
-            type="submit"
-            class="modal__submit-button"
-            id="delete-card-confirm"
-          >
-            Yes
-          </button>
+          <fieldset class="modal__fieldset">
+            <p class="modal__title delete__card-title">Are you sure?</p>
+            <button
+              type="submit"
+              class="modal__submit-button"
+              id="delete-card-confirm  delete__card-button"
+            >
+              Yes
+            </button>
+          </fieldset>
         </form>
       </div>
     </div>

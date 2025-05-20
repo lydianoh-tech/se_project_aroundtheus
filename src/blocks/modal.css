@@ -164,6 +164,16 @@
 .modal__submit-button_type_disabled {
   background-color: rgba(33, 33, 33, 0.5);
 }
+.delete__card-form {
+  width: 430px;
+  height: 181px;
+}
+.delete__card-title {
+  margin-right: 36px;
+}
+.delete__card-button {
+  margin-top: 0;
+}
 
 @media screen and (max-width: 480px) {
   .modal__container {

@@ -12,6 +12,7 @@ export default class FormApi {
   }
 
   getUserInfo() {
+    console.log(this._headers);
     return fetch(`${this._baseUrl}/users/me`, {
       headers: this._headers,
     }).then(this._checkResponse);
@@ -72,23 +73,3 @@ export default class FormApi {
     return Promise.all([this.getUserInfo(), this.getInitialCards()]);
   }
 }
-
-// Initialize the API instance
-const api = new FormApi({
-  baseUrl: "https://around-api.en.tripleten-services.com/v1",
-  headers: {
-    authorization: "c56e30dc-2883-4270-a59e-b2f7bae969c6",
-    "Content-Type": "application/json",
-  },
-});
-
-// Example usage
-api
-  .getAppData()
-  .then(([userData, cards]) => {
-    console.log("User:", userData);
-    console.log("Cards:", cards);
-  })
-  .catch((err) => {
-    console.error("API Error:", err);
-  });

@@ -48,7 +48,7 @@ const imageTitle = imageModal.querySelector("#image__title");
 const api = new FormApi({
   baseUrl: "https://around-api.en.tripleten-services.com/v1",
   headers: {
-    authorization: "7fb1cc65-9300-4e6b-bc42-831d1e5f24f7",
+    authorization: "1c65c6f1-abdd-470a-ae4d-370153ad05d9",
     "Content-Type": "application/json",
   },
 });
@@ -59,6 +59,23 @@ const userInfo = new UserInfo({
   jobSelector: "#profile__description",
   avatarSelector: ".profile__image",
 });
+function createCard(data) {
+  const card = new Card(
+    data,
+    "#cards__template",
+    () => {
+      imagePopup.open(data); // updated instance
+    },
+    (cardId, cardElement) => {
+      handleDeleteCard(cardId, cardElement);
+    }
+  );
+  return card.generateCard();
+}
+
+// Create image popup instance
+const imagePopup = new PopupWithImage("#image__modal");
+imagePopup.setEventListeners();
 
 // Fetch user info and initial cards
 Promise.all([api.getUserInfo(), api.getInitialCards()])
@@ -84,21 +101,6 @@ Promise.all([api.getUserInfo(), api.getInitialCards()])
   .catch((err) => {
     console.error("Error loading app data:", err);
   });
-
-// Create card function
-function createCard(data) {
-  const card = new Card(
-    data,
-    "#cards__template",
-    () => {
-      imagePopup.open(data);
-    },
-    (cardId, cardElement) => {
-      handleDeleteCard(cardId, cardElement);
-    }
-  );
-  return card.generateCard();
-}
 
 // Handle delete card
 const deleteCardPopup = new PopupWithConfirmation("#delete__card-modal", () => {
@@ -156,7 +158,7 @@ profileFormPopup.setEventListeners();
 const addCardPopup = new PopupWithForm("#add__card-modal", (data) => {
   handleFormSubmit(
     addCardPopup,
-    api.addCard({ name: data.name, link: data.link }),
+    api.addCard({ name: data.title, link: data.image }),
     (cardData) => {
       const cardElement = createCard(cardData);
       cardsListElement.prepend(cardElement);
@@ -169,10 +171,9 @@ addCardPopup.setEventListeners();
 const updateAvatarPopup = new PopupWithForm("#update__avatar-modal", (data) => {
   handleFormSubmit(
     updateAvatarPopup,
-    api.updateAvatar({ avatar: data.avatar }),
+    api.updateAvatar(data.avatar),
     (userData) => {
-      const avatarImage = document.querySelector(".profile__image");
-      avatarImage.src = userData.avatar;
+      userInfo.setUserAvatar(userData.avatar);
     }
   );
 });
