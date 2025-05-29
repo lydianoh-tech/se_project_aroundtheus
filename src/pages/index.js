@@ -60,19 +60,18 @@ const userInfo = new UserInfo({
   avatarSelector: ".profile__image",
 });
 function createCard(data) {
-  // Add current user ID to the card data for like logic
   const cardData = { ...data, currentUserId: userInfo.getUserId() };
 
   const card = new Card(
     cardData,
     "#cards__template",
-    // handleImageClick
+
     (name, link) => {
       imagePopup.open({ name, link });
     },
-    //handleDeleteClick
+
     handleDeleteCard,
-    // handleLikeClick
+
     (cardId, isLiked) => {
       const apiMethod = isLiked ? api.unlikeCard(cardId) : api.likeCard(cardId);
       return apiMethod
