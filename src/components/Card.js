@@ -1,12 +1,33 @@
 export default class Card {
-  constructor(data, cardSelector, handleImageClick, handleDeleteClick) {
+  constructor(
+    data,
+    cardSelector,
+    handleImageClick,
+    handleDeleteClick,
+    handleLikeClick
+  ) {
     this._data = data;
+    this._likes = data.likes || [];
+    this._ownerId = data.owner;
+    this._userId = data.currentUserId;
     this._id = data._id || data.id;
+
     this._name = data.name;
     this._link = data.link;
     this._cardSelector = cardSelector;
     this._handleImageClick = handleImageClick;
     this._handleDeleteClick = handleDeleteClick;
+    this._handleLikeClick = handleLikeClick;
+  }
+
+  _updateLikesView() {
+    if (this.isLiked())
+      this._likeButton.classList.add("card__like-button_active");
+    else
+      this._likeButton.classList.toggle(
+        "card__like-button_active",
+        this.isLiked()
+      );
   }
 
   _getTemplate() {
@@ -15,6 +36,14 @@ export default class Card {
       .content.querySelector(".card")
       .cloneNode(true);
   }
+  isLiked() {
+    return this._likes.some((user) => user._id === this._userId);
+  }
+
+  setLikesInfo(data) {
+    this._likes = data.likes || [];
+    this._updateLikesView();
+  }
 
   _setEventListeners() {
     this._cardImageElement.addEventListener("click", () => {
@@ -22,15 +51,11 @@ export default class Card {
     });
 
     this._likeButton.addEventListener("click", () => {
-      this._likeButton.classList.toggle("card__like-button_active");
+      this._handleLikeClick(this._id, this.isLiked());
     });
 
     this._deleteButton.addEventListener("click", () => {
-      if (this._id && this._handleDeleteClick) {
-        this._handleDeleteClick(this._id, this._element);
-      } else {
-        console.error("Delete handler or card ID is missing.");
-      }
+      this._handleDeleteClick(this._id, this._element);
     });
   }
 
@@ -44,6 +69,7 @@ export default class Card {
     this._cardImageElement.src = this._link;
     this._cardImageElement.alt = this._name;
 
+    this._updateLikesView();
     this._setEventListeners();
 
     return this._element;

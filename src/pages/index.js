@@ -60,16 +60,31 @@ const userInfo = new UserInfo({
   avatarSelector: ".profile__image",
 });
 function createCard(data) {
+  // Add current user ID to the card data for like logic
+  const cardData = { ...data, currentUserId: userInfo.getUserId() };
+
   const card = new Card(
-    data,
+    cardData,
     "#cards__template",
-    () => {
-      imagePopup.open(data); // updated instance
+    // handleImageClick
+    (name, link) => {
+      imagePopup.open({ name, link });
     },
-    (cardId, cardElement) => {
-      handleDeleteCard(cardId, cardElement);
+    //handleDeleteClick
+    handleDeleteCard,
+    // handleLikeClick
+    (cardId, isLiked) => {
+      const apiMethod = isLiked ? api.unlikeCard(cardId) : api.likeCard(cardId);
+      return apiMethod
+        .then((updatedCard) => {
+          card.setLikesInfo(updatedCard);
+        })
+        .catch((err) => {
+          console.error("Error liking card:", err);
+        });
     }
   );
+
   return card.generateCard();
 }
 
@@ -84,6 +99,7 @@ Promise.all([api.getUserInfo(), api.getInitialCards()])
       name: userData.name,
       job: userData.about,
       avatar: userData.avatar,
+      id: userData._id,
     });
 
     const section = new Section(
@@ -102,7 +118,6 @@ Promise.all([api.getUserInfo(), api.getInitialCards()])
     console.error("Error loading app data:", err);
   });
 
-// Handle delete card
 const deleteCardPopup = new PopupWithConfirmation("#delete__card-modal", () => {
   api
     .deleteCard(cardToDeleteId)
@@ -112,7 +127,11 @@ const deleteCardPopup = new PopupWithConfirmation("#delete__card-modal", () => {
     })
     .catch((err) => {
       console.error("Error deleting card:", err);
+    })
+    .finally(() => {
+      deleteCardPopup.setButtonText("Yes");
     });
+  console.log(cardToDeleteId);
 });
 
 deleteCardPopup.setEventListeners();
