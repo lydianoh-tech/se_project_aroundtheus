@@ -7,7 +7,7 @@ import UserInfo from "../components/UserInfo.js";
 import Card from "../components/Card.js";
 import FormValidator from "../components/FormValidator.js";
 import { initialCards, FormValidatorObjects } from "../utils/constants.js";
-import FormApi from "../components/FormApi.js";
+import Api from "../components/Api.js";
 import PopupWithConfirmation from "../components/PopupWithConfirmation.js";
 
 const profileEditButton = document.querySelector("#profile__edit-button");
@@ -45,7 +45,7 @@ const imageModal = document.querySelector("#image__modal");
 const imageLink = imageModal.querySelector("#image__link");
 const imageTitle = imageModal.querySelector("#image__title");
 
-const api = new FormApi({
+const api = new Api({
   baseUrl: "https://around-api.en.tripleten-services.com/v1",
   headers: {
     authorization: "1c65c6f1-abdd-470a-ae4d-370153ad05d9",
@@ -156,6 +156,33 @@ function handleFormSubmit(popupInstance, apiMethod, successCallback) {
     })
     .finally(() => {
       popupInstance.setButtonText("Save");
+    });
+}
+function handleAvatarFormSubmit({ avatar }) {
+  api
+    .setUserAvatar(avatar)
+    .then((res) => {
+      userInfo.setUserAvatar(res.avatar);
+      updateAvatarPopup.close();
+    })
+    .catch((err) => {
+      console.error(err);
+    });
+}
+function handleProfileUpdate({ name, description }) {
+  api
+    .updateProfile({ name, about: description })
+    .then((res) => {
+      userInfo.setUserInfo({
+        name: res.name,
+        job: res.about,
+        avatar: res.avatar,
+        id: res._id,
+      });
+      profileFormPopup.close();
+    })
+    .catch((err) => {
+      console.error(err);
     });
 }
 

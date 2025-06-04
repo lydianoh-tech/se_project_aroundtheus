@@ -19,7 +19,7 @@ export default class UserInfo {
     this._nameElement.textContent = name;
     this._jobElement.textContent = job;
     this._avatarElement.src = avatar;
-    this._userId = id; // Save the user ID for later use
+    this._userId = id;
   }
 
   setUserAvatar(avatar) {
