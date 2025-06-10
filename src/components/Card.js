@@ -36,11 +36,11 @@ export default class Card {
       .cloneNode(true);
   }
   isLiked() {
-    return this._likes.some((user) => user._id === this._userId);
+    return this._data.isLiked; // this way
   }
 
   setLikesInfo(data) {
-    this._likes = data.likes || [];
+    this._data = data;
     this._updateLikesView();
   }
 
@@ -79,7 +79,7 @@ export default class Card {
     this._titleElement.textContent = this._name;
     this._likeCountElement.textContent = this._likes.length;
 
-    if (this._isLiked()) {
+    if (this.isLiked()) {
       this._likeButton.classList.add("card__like-button_active");
     } else {
       this._likeButton.classList.remove("card__like-button_active");

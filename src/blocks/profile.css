@@ -36,9 +36,9 @@
   padding: 0;
   margin: 47px;
 }
-.profile__avatar-edit-button:hover {
-  cursor: pointer;
-  opacity: 60%;
+.profile__avatar-container:hover .profile__avatar-edit-icon {
+  opacity: 1;
+  pointer-events: auto;
 }
 .profile__avatar-edit-icon {
   width: 26px;
@@ -50,6 +50,12 @@
   padding: 0;
   cursor: pointer;
   background-color: transparent;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 .profile__title {
   grid-area: title;

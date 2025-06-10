@@ -91,6 +91,8 @@ function createCard(data) {
 const imagePopup = new PopupWithImage("#image__modal");
 imagePopup.setEventListeners();
 
+let section;
+
 // Fetch user info and initial cards
 Promise.all([api.getUserInfo(), api.getInitialCards()])
   .then(([userData, cards]) => {
@@ -145,7 +147,7 @@ function handleDeleteCard(cardId, cardElement) {
 }
 
 function handleFormSubmit(popupInstance, apiMethod, successCallback) {
-  popupInstance.setButtonText("Saving...");
+  popupInstance.renderLoading(true);
   apiMethod
     .then((response) => {
       successCallback(response);
@@ -155,7 +157,7 @@ function handleFormSubmit(popupInstance, apiMethod, successCallback) {
       console.error("Error:", err);
     })
     .finally(() => {
-      popupInstance.setButtonText("Save");
+      popupInstance.renderLoading(false);
     });
 }
 function handleAvatarFormSubmit({ avatar }) {
@@ -200,16 +202,21 @@ const profileFormPopup = new PopupWithForm("#profile__modal", (data) => {
 profileFormPopup.setEventListeners();
 
 // Add Card Form Submission
+
+// Add Card Form Submission
 const addCardPopup = new PopupWithForm("#add__card-modal", (data) => {
   handleFormSubmit(
     addCardPopup,
     api.addCard({ name: data.title, link: data.image }),
     (cardData) => {
       const cardElement = createCard(cardData);
-      cardsListElement.prepend(cardElement);
+      section.addItem(cardElement);
+      addCardForm.reset(); // reset
+      addCardFormValidator.disableButton(); // disable
     }
   );
 });
+
 addCardPopup.setEventListeners();
 
 // Update Avatar Form Submission
