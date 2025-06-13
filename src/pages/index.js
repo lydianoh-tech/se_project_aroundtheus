@@ -103,7 +103,7 @@ Promise.all([api.getUserInfo(), api.getInitialCards()])
       id: userData._id,
     });
 
-    const section = new Section(
+    section = new Section(
       {
         items: cards,
         renderer: (item) => {
