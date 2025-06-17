@@ -202,8 +202,6 @@ const profileFormPopup = new PopupWithForm("#profile__modal", (data) => {
 profileFormPopup.setEventListeners();
 
 // Add Card Form Submission
-
-// Add Card Form Submission
 const addCardPopup = new PopupWithForm("#add__card-modal", (data) => {
   handleFormSubmit(
     addCardPopup,
