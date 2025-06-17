@@ -194,8 +194,12 @@ const profileFormPopup = new PopupWithForm("#profile__modal", (data) => {
     profileFormPopup,
     api.updateProfile({ name: data.name, about: data.description }),
     (userData) => {
-      profileName.textContent = userData.name;
-      profileDescription.textContent = userData.about;
+      userInfo.setUserInfo({
+        name: userData.name,
+        job: userData.about,
+        avatar: userData.avatar,
+        id: userData._id,
+      });
     }
   );
 });
