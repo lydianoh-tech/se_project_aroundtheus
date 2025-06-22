@@ -3,9 +3,22 @@ import Popup from "./Popup.js";
 export default class PopupWithForm extends Popup {
   constructor(popupSelector, handleFormSubmit) {
     super(popupSelector);
+
     this._form = this._popup.querySelector(".modal__form");
     this._inputList = this._form.querySelectorAll(".modal__input");
+    this._submitButton = this._popup.querySelector(".modal__submit-button");
+    this._submitBtnText = this._submitButton.textContent;
     this._handleFormSubmit = handleFormSubmit;
+  }
+  getForm() {
+    return this._form;
+  }
+  renderLoading(isLoading, loadingText = "Saving...") {
+    if (isLoading) {
+      this._submitButton.textContent = loadingText;
+    } else {
+      this._submitButton.textContent = this._submitBtnText;
+    }
   }
 
   _getInputValues() {
@@ -27,8 +40,15 @@ export default class PopupWithForm extends Popup {
     this._form.addEventListener("submit", (evt) => {
       evt.preventDefault();
       this._handleFormSubmit(this._getInputValues());
-      this._form.reset();
-      this.close();
     });
+  }
+  setButtonText(text) {
+    if (this._submitButton) {
+      this._submitButton.textContent = text;
+    }
+  }
+
+  getButtonText() {
+    return this._submitButton ? this._submitButton.textContent : "";
   }
 }
