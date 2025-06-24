@@ -249,11 +249,11 @@ document.querySelector("#profile__add-button").addEventListener("click", () => {
   addCardPopup.open();
 });
 
-document
-  .querySelector("#profile__avatar-edit-button")
-  .addEventListener("click", () => {
-    updateAvatarPopup.open();
-  });
+const avatarFormButton = document.querySelector(".profile__avatar-container");
+
+avatarFormButton.addEventListener("click", () => {
+  updateAvatarPopup.open();
+});
 
 // Enable form validation
 const profileFormValidator = new FormValidator(

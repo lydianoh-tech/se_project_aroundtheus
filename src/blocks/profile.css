@@ -28,19 +28,32 @@
 }
 
 .profile__avatar-edit-button {
+  background: url("../images/edit-avatar.svg") center/contain no-repeat;
   background-size: contain;
   width: 26px;
   height: 26px;
-  grid-area: button;
   border: none;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s;
   padding: 0;
   margin: 47px;
+  background-color: transparent;
+  object-fit: contain;
+  background-repeat: no-repeat;
+  background-size: contain;
+  cursor: pointer;
 }
-.profile__avatar-container:hover .profile__avatar-edit-icon {
+.profile__avatar-container:hover .profile__avatar-edit-button {
   opacity: 1;
   pointer-events: auto;
+  background-color: transparent;
+
+  position: absolute;
+  top: 0;
+  left: 0;
 }
-.profile__avatar-edit-icon {
+/*.profile__avatar-edit-icon {
   width: 26px;
   height: 26px;
   margin: 47px;
@@ -49,14 +62,14 @@
   background-size: contain;
   padding: 0;
   cursor: pointer;
-  background-color: transparent;
-  opacity: 0;
   pointer-events: none;
   transition: opacity 0.2s;
+  background-color: transparent;
+
   position: absolute;
   top: 0;
   left: 0;
-}
+}*/
 .profile__title {
   grid-area: title;
   font-family: "Inter", Arial, Sans-serif;
