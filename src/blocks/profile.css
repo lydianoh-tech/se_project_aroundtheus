@@ -53,23 +53,7 @@
   top: 0;
   left: 0;
 }
-/*.profile__avatar-edit-icon {
-  width: 26px;
-  height: 26px;
-  margin: 47px;
-  object-fit: contain;
-  background-repeat: no-repeat;
-  background-size: contain;
-  padding: 0;
-  cursor: pointer;
-  pointer-events: none;
-  transition: opacity 0.2s;
-  background-color: transparent;
 
-  position: absolute;
-  top: 0;
-  left: 0;
-}*/
 .profile__title {
   grid-area: title;
   font-family: "Inter", Arial, Sans-serif;
